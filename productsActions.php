@@ -63,4 +63,22 @@ function checkIfProductExists($conn, $product_name, $product_country_id, $produc
 	}
 }
 
+function getProductByID($conn, $product_id)
+{
+	try {
+		$sql = $conn->prepare(
+			"SELECT *
+			FROM products
+			WHERE products.ID = :product_id"
+			);
+		$sql->bindParam(':product_id', $product_id);
+		$sql->execute();
+
+		$row = $sql->fetch(PDO::FETCH_ASSOC);
+		return $row;
+	} catch (PDOException  $e) {
+		throw new PDOException("Can't check if product exists " . $e->getMessage());
+	}
+}
+
 ?>

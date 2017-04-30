@@ -22,44 +22,13 @@ try {
 
 	if($_SERVER["REQUEST_METHOD"] == "POST")
   {
-    try {
-			include "connection.php";
+		$required_products = array('ids' => $_POST['product'],
+															 'quantities' => $_POST['quantity']);
+		include 'warehouseActions.php';
+		dispatchProducts($products, $required_products);
 
-			$required_products = array('ids' => $_POST['product'],
-																 'quantities' => $_POST['quantity']);
-
-			$length = count($required_products['ids']);
-			//check quantities
-			for ($i=0; $i < $length; $i++) {
-				$req_quantity = $required_products['quantities'][$i];
-				$req_product_id = $required_products['ids'][$i];
-				$warehouse_stock = getProductQuantity($conn, $req_product_id);
-				if (floatval($req_quantity) > $warehouse_stock) {
-					die('Not enough stock for ' . "'" . $products[$req_product_id]['name'] . "'"
-					 		. '. Warehouse stock: ' . $warehouse_stock
-						  . '. You requested ' . $req_quantity
-							. '<br>' . '<p><a href="dispatch.php">Go Back</a></p>');
-				}
-				//refresh cached products quantity
-				$products[$req_product_id]['quantity'] = $warehouse_stock;
-			}
-
-			for ($i=0; $i < $length; $i++) {
-				$req_quantity = floatval($required_products['quantities'][$i]);
-				$req_product_id = $required_products['ids'][$i];
-				$new_product_quantity = floatval($products[$req_product_id]['quantity']) - $req_quantity;
-				updateProductQuantity($conn, $products[$req_product_id], $new_product_quantity);
-				$products[$req_product_id]['quantity'] = $new_product_quantity;
-			}
-
-      die('Dispatch complete !' . '<br>' . '<p><a href="warehouse.php">Go to Warehouse</a></p>');
-
-      } catch (PDOException  $e) {
-        die("Connection failed: " . $e->getMessage());
-      } catch (Exception $e) {
-				die($e->getMessage());
-			}
-    }
+   	die('Dispatch complete !');
+	}
 
 function getProductQuantity($conn, $id)
 {
@@ -100,7 +69,6 @@ function updateProductQuantity($conn, $product, $new_product_quantity)
 
 		$descFormat = 'Product quantity modified from %s to %s';
 		$desc = sprintf($descFormat, $old_product_quantity, $new_product_quantity);
-		include 'ipaddress.php';
 		$ip = get_client_ip();
 		$stmt->bindParam(':employee_ID', $employee_ID);
 		$stmt->bindParam(':product_id', $product['ID']);
@@ -121,6 +89,7 @@ function updateProductQuantity($conn, $product, $new_product_quantity)
 <script type="text/javascript">
 products = <?php echo json_encode($products); ?>;
 btnSend = '<input type="submit" name="btnSend" value="Send entries">';
+btnSaveTemplate = '<input type="submit" name="btnSaveTemplate" formaction="SaveTemplate.php" value="Save As Template">';
 current_id = 0;
 function addProduct() {
 	if(current_id >= products.length)
@@ -155,7 +124,7 @@ function addProduct() {
   }
   current_id++;
 
-  document.getElementById("products").innerHTML = formElements + '<br>' + btnSend;
+  document.getElementById("products").innerHTML = formElements + '<br>' + btnSend + btnSaveTemplate;
 	onChangeSelect(document.getElementById('product' + (current_id - 1)));
 }
 

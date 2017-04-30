@@ -24,17 +24,16 @@ $product_name = $product_country_id = $product_quantity = $product_UM_id = '';
         $product_UM_id = trim($_POST['product_UM_id']);
         if ($product_name != '' && $product_country_id != '' && $product_quantity != '' && $product_UM_id != '') {
         include 'connection.php';
-				include 'getIDqueries.php';
 				include 'productsActions.php';
 
 				$desc = '';
 				$product = checkIfProductExists($conn, $product_name, $product_country_id, $product_UM_id);
 				$product_id = $product['ID'];
-				if ($product_id != False)
+				if ($product != False)
 				{
 					$new_quantity = floatval($product['Quantity']) + floatval($product_quantity);
 					updateProduct($conn, $product_id, $product['Name'], $product['Country_ID'], $new_quantity, $product['Unit_of_measure_ID']);
-					$desc = 'Quantity added: ' . $product_quantity;
+					$desc = 'Product quantity modified from ' . $product['Quantity'] . ' to ' . $new_quantity;
 				}
 				else
 				{
