@@ -5,6 +5,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     include "connection.php";
     include 'productsActions.php';
 
+    if (isset($_POST['JSON'])) {
+      $_POST['product'] = json_decode($_POST['product'], true);
+      $_POST['quantity'] = json_decode($_POST['quantity'], true);
+    }
+
     $required_products = array('ids' => $_POST['product'],
                                'quantities' => $_POST['quantity']);
 

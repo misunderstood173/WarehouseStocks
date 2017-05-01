@@ -59,7 +59,7 @@ $full_name = $username = $password = '';
         }
       }
 ?>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<form method="post" action="">
 	<div class="inputField">
 		<label for="full_name">Full name: </label>
 		<input type="text" name="full_name" maxlength="255" tabindex="1" value="<?php echo $full_name; ?>">

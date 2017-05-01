@@ -27,7 +27,14 @@ try {
 		include 'warehouseActions.php';
 		dispatchProducts($products, $required_products);
 
-   	die('Dispatch complete !');
+   	die('Dispatch complete !'
+				. '<form id="products" method="post" action="">
+							<input type="hidden" name="JSON" value="json_arrays" >
+							<input type="hidden" name="product" value=\'' . json_encode($_POST['product'], true) . '\' >
+							<input type="hidden" name="quantity" value=\'' . json_encode($_POST['quantity'], true) . '\' >
+							<input type="submit" name="btnSaveTemplate" formaction="SaveTemplate.php" value="Save As Template">
+					 </form>'
+				);
 	}
 
 function getProductQuantity($conn, $id)
@@ -81,7 +88,7 @@ function updateProductQuantity($conn, $product, $new_product_quantity)
 }
 
 ?>
-<form id="products" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<form id="products" method="post" action="">
 </form>
 
 <button type="button" name="btnAddProduct" onclick="addProduct()">+</button>

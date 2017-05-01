@@ -66,7 +66,7 @@ $product_name = $product_country_id = $product_quantity = $product_UM_id = '';
       }
 
 ?>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<form method="post" action="">
 	<div class="inputField">
 		<label for="product_name">Product name: </label>
 		<input type="text" name="product_name" maxlength="255" tabindex="1">

@@ -68,7 +68,7 @@ die('You are already logged in. Go to the <a href="warehouse.php">Warehouse</a>'
 
  ?>
 
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<form method="post" action="">
 	<div class="inputField">
 		<label for="username">Username: </label>
 		<input type="text" name="username" maxlength="32" tabindex="1" value="<?php echo $username; ?>">

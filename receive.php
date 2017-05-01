@@ -22,7 +22,7 @@ echo buildDefaultMenu();
   }
 
 ?>
-<form id="products" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<form id="products" method="post" action="">
 
 </form>
 
@@ -31,7 +31,7 @@ echo buildDefaultMenu();
     <input type="submit" name="btnReceiveProductsFromFile" value="Receive Products From File">
 </form>
 
-<form id="products" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<form id="products" method="post" action="">
 </form>
 
 <button type="button" name="btnAddProduct" onClick="addProduct()">+</button>

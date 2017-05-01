@@ -69,7 +69,7 @@ echo '<br>';
   <input type="text" name="id2[]" value="9">
   <input type="text" name="id2[]" value="8">
   <input type="text" name="id2[]" value="7">
-  <input type="submit" formaction="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" value="Send id">
+  <input type="submit" formaction="" value="Send id">
   <input type="submit" formaction="login.php" value="Send lgin">
   <input type="submit" formaction="products.php" value="Send 32">
 </form>
@@ -87,7 +87,7 @@ echo '<br>';
 <p id='asdf'></p>
 <script>
 formElements = '';
-btnSend = '<input type="submit" formaction="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" value="Send entries">';
+btnSend = '<input type="submit" formaction="" value="Send entries">';
 currentId = 1;
 function myFunction() {
   formElements += '<br>' + '<input name="entries[]" id="id' + currentId + '" type="text" value="test' + currentId + '">';
