@@ -79,6 +79,7 @@ die('You are already logged in. Go to the <a href="warehouse.php">Warehouse</a>'
 	</div>
 	<input type="submit" name="btnLogIn" value="Log In" tabindex="3">
 </form>
+	<p><a href="index.html">Go back</a></p>
 
 </body>
 </html>
