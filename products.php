@@ -52,6 +52,7 @@ try {
 		<td>
 	 	 	<input type="submit" formaction="updateproduct.php" value="Update">
 	    <input type="submit" formaction="deleteproduct.php" value="Delete">
+			<input type="submit" formaction="productlog.php" value="View Product Log">
 		</td>
 	 </tr>
 	 <input type="hidden" name="product_id" value="%s">

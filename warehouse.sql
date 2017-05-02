@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2017 at 11:07 AM
+-- Generation Time: May 02, 2017 at 07:16 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `warehouse`
@@ -41,7 +41,8 @@ INSERT INTO `action_type` (`ID`, `type`) VALUES
 (3, 'Update product'),
 (4, 'Delete product'),
 (6, 'Add new user'),
-(7, 'Dispatch');
+(7, 'Dispatch'),
+(8, 'Receive');
 
 -- --------------------------------------------------------
 
@@ -401,7 +402,97 @@ INSERT INTO `employee_log` (`ID`, `employee_ID`, `action_type_ID`, `product_modi
 (51, 2, 4, 25, 'Product {asd, Afghanistan, 1, pieces} deleted', '127.0.0.1', '2017-04-30 10:02:06'),
 (52, 2, 4, 24, 'Product {asdf, Afghanistan, 3, pieces} deleted', '127.0.0.1', '2017-04-30 10:02:09'),
 (53, 2, 4, 23, 'Product {asd, Afghanistan, 677, kilograms} deleted', '127.0.0.1', '2017-04-30 10:02:15'),
-(54, 2, 2, 1, 'Quantity added: 5', '127.0.0.1', '2017-04-30 10:03:46');
+(54, 2, 2, 1, 'Quantity added: 5', '127.0.0.1', '2017-04-30 10:03:46'),
+(55, 2, 2, 1, 'Quantity added: 1', '127.0.0.1', '2017-04-30 13:28:14'),
+(56, 2, 7, 1, 'Product quantity modified from 161 to 160', '127.0.0.1', '2017-04-30 13:30:49'),
+(57, 2, 7, 19, 'Product quantity modified from 20 to 19', '127.0.0.1', '2017-04-30 13:31:57'),
+(58, 2, 8, 1, 'Product quantity modified from 160 to 166', '127.0.0.1', '2017-04-30 13:44:25'),
+(59, 2, 8, 19, 'Product quantity modified from 19 to 20', '127.0.0.1', '2017-04-30 13:47:54'),
+(60, 2, 8, 27, 'Product added', '127.0.0.1', '2017-04-30 13:47:54'),
+(61, 2, 4, 27, 'Product {asd, Afghanistan, 45, pieces} deleted', '127.0.0.1', '2017-04-30 13:49:17'),
+(62, 2, 8, 1, 'Product quantity modified from 166 to 169', '127.0.0.1', '2017-04-30 14:40:21'),
+(63, 2, 8, 28, 'Product added', '127.0.0.1', '2017-04-30 14:40:21'),
+(64, 2, 8, 28, 'Product quantity modified from 0.85 to 1.1', '127.0.0.1', '2017-04-30 14:40:51'),
+(73, 2, 7, 1, 'Product quantity modified from 169 to 168', '127.0.0.1', '2017-04-30 16:07:52'),
+(74, 2, 8, 1, 'Product quantity modified from 168 to 169', '127.0.0.1', '2017-04-30 16:12:17'),
+(75, 2, 8, 1, 'Product quantity modified from 169 to 169.5', '127.0.0.1', '2017-04-30 16:12:51'),
+(76, 2, 8, 28, 'Product quantity modified from 1.05 to 1.06', '127.0.0.1', '2017-04-30 16:12:51'),
+(71, 2, 7, 13, 'Product quantity modified from 300 to 200', '127.0.0.1', '2017-04-30 15:46:35'),
+(72, 2, 7, 28, 'Product quantity modified from 1.1 to 1.05', '127.0.0.1', '2017-04-30 15:46:35'),
+(77, 2, 8, 28, 'Product quantity modified from 1.06 to 1.061', '127.0.0.1', '2017-04-30 16:17:04'),
+(78, 2, 7, 28, 'Product quantity modified from 1.061 to 1.051', '127.0.0.1', '2017-04-30 16:18:01'),
+(79, 2, 8, 1, 'Product quantity modified from 169.5 to 170.5', '127.0.0.1', '2017-04-30 17:17:43'),
+(80, 2, 8, 9, 'Product quantity modified from 85 to 85.5', '127.0.0.1', '2017-04-30 17:17:43'),
+(81, 2, 8, 1, 'Product quantity modified from 170.5 to 171.5', '127.0.0.1', '2017-04-30 17:20:04'),
+(82, 2, 8, 13, 'Product quantity modified from 200 to 205', '127.0.0.1', '2017-04-30 17:20:04'),
+(83, 2, 8, 14, 'Product quantity modified from 1000 to 1025', '127.0.0.1', '2017-04-30 17:20:04'),
+(84, 2, 8, 1, 'Product quantity modified from 171.5 to 172.5', '127.0.0.1', '2017-04-30 17:21:37'),
+(85, 2, 8, 13, 'Product quantity modified from 205 to 210', '127.0.0.1', '2017-04-30 17:21:37'),
+(86, 2, 8, 14, 'Product quantity modified from 1025 to 1050', '127.0.0.1', '2017-04-30 17:21:37'),
+(87, 2, 8, 29, 'Product added', '127.0.0.1', '2017-04-30 17:21:37'),
+(88, 2, 8, 1, 'Product quantity modified from 172.5 to 173.5', '127.0.0.1', '2017-04-30 17:22:30'),
+(89, 2, 8, 13, 'Product quantity modified from 210 to 210', '127.0.0.1', '2017-04-30 17:22:30'),
+(90, 2, 8, 14, 'Product quantity modified from 1050 to 1050', '127.0.0.1', '2017-04-30 17:22:30'),
+(91, 2, 8, 29, 'Product quantity modified from 5 to 5', '127.0.0.1', '2017-04-30 17:22:30'),
+(92, 2, 8, 1, 'Product quantity modified from 173.5 to 174.5', '127.0.0.1', '2017-04-30 17:28:52'),
+(93, 2, 8, 13, 'Product quantity modified from 210 to 215', '127.0.0.1', '2017-04-30 17:28:52'),
+(94, 2, 8, 14, 'Product quantity modified from 1050 to 1075', '127.0.0.1', '2017-04-30 17:28:52'),
+(95, 2, 8, 29, 'Product quantity modified from 5 to 10', '127.0.0.1', '2017-04-30 17:28:52'),
+(96, 2, 3, 28, 'Product {asdf, Afghanistan, 1.051, kilograms} modified to {praf, Afghanistan, 1.051, kilograms}', '127.0.0.1', '2017-04-30 17:29:28'),
+(97, 1, 1, NULL, 'John Doe[johndoe] has logged in', '127.0.0.1', '2017-05-01 16:12:00'),
+(98, 1, 7, 1, 'Product quantity modified from 174.5 to 173.5', '127.0.0.1', '2017-05-01 16:16:03'),
+(99, 1, 7, 28, 'Product quantity modified from 1.051 to 1.041', '127.0.0.1', '2017-05-01 16:16:03'),
+(100, 1, 7, 9, 'Product quantity modified from 85.5 to 85.25', '127.0.0.1', '2017-05-01 16:16:03'),
+(101, 1, 7, 1, 'Product quantity modified from 173.5 to 172.5', '127.0.0.1', '2017-05-01 16:20:12'),
+(102, 1, 7, 28, 'Product quantity modified from 1.041 to 1.031', '127.0.0.1', '2017-05-01 16:20:12'),
+(103, 1, 7, 9, 'Product quantity modified from 85.25 to 85', '127.0.0.1', '2017-05-01 16:20:12'),
+(104, 1, 7, 1, 'Product quantity modified from 172.5 to 171.5', '127.0.0.1', '2017-05-01 16:22:27'),
+(105, 1, 7, 28, 'Product quantity modified from 1.031 to 1.021', '127.0.0.1', '2017-05-01 16:22:27'),
+(106, 1, 7, 9, 'Product quantity modified from 85 to 84.975', '127.0.0.1', '2017-05-01 16:22:27'),
+(107, 1, 7, 1, 'Product quantity modified from 171.5 to 170.5', '127.0.0.1', '2017-05-01 16:51:57'),
+(108, 1, 7, 28, 'Product quantity modified from 1.021 to 1.011', '127.0.0.1', '2017-05-01 16:51:57'),
+(109, 1, 7, 9, 'Product quantity modified from 84.975 to 84.95', '127.0.0.1', '2017-05-01 16:51:57'),
+(110, 1, 7, 1, 'Product quantity modified from 170.5 to 169.5', '127.0.0.1', '2017-05-01 16:54:17'),
+(111, 1, 7, 28, 'Product quantity modified from 1.011 to 1.001', '127.0.0.1', '2017-05-01 16:54:17'),
+(112, 1, 7, 9, 'Product quantity modified from 84.95 to 84.925', '127.0.0.1', '2017-05-01 16:54:17'),
+(113, 1, 7, 1, 'Product quantity modified from 169.5 to 168.5', '127.0.0.1', '2017-05-01 17:00:43'),
+(114, 1, 7, 28, 'Product quantity modified from 1.001 to 0.991', '127.0.0.1', '2017-05-01 17:00:43'),
+(115, 1, 7, 9, 'Product quantity modified from 84.925 to 84.9', '127.0.0.1', '2017-05-01 17:00:43'),
+(116, 1, 7, 1, 'Product quantity modified from 168.5 to 167.5', '127.0.0.1', '2017-05-01 17:03:59'),
+(117, 1, 7, 28, 'Product quantity modified from 0.991 to 0.981', '127.0.0.1', '2017-05-01 17:03:59'),
+(118, 1, 7, 9, 'Product quantity modified from 84.9 to 84.875', '127.0.0.1', '2017-05-01 17:03:59'),
+(119, 1, 7, 1, 'Product quantity modified from 167.5 to 166.5', '127.0.0.1', '2017-05-01 17:06:36'),
+(120, 1, 7, 28, 'Product quantity modified from 0.981 to 0.971', '127.0.0.1', '2017-05-01 17:06:36'),
+(121, 1, 7, 9, 'Product quantity modified from 84.875 to 84.85', '127.0.0.1', '2017-05-01 17:06:36'),
+(122, 1, 8, 1, 'Product quantity modified from 166.5 to 167.5', '127.0.0.1', '2017-05-01 17:07:22'),
+(123, 1, 8, 28, 'Product quantity modified from 0.971 to 0.981', '127.0.0.1', '2017-05-01 17:07:22'),
+(124, 1, 8, 9, 'Product quantity modified from 84.85 to 84.875', '127.0.0.1', '2017-05-01 17:07:22'),
+(125, 1, 8, 1, 'Product quantity modified from 167.5 to 168.5', '127.0.0.1', '2017-05-01 17:07:30'),
+(126, 1, 8, 28, 'Product quantity modified from 0.981 to 0.991', '127.0.0.1', '2017-05-01 17:07:30'),
+(127, 1, 8, 9, 'Product quantity modified from 84.875 to 84.9', '127.0.0.1', '2017-05-01 17:07:30'),
+(128, 1, 8, 1, 'Product quantity modified from 168.5 to 169.5', '127.0.0.1', '2017-05-01 17:07:35'),
+(129, 1, 8, 28, 'Product quantity modified from 0.991 to 1.001', '127.0.0.1', '2017-05-01 17:07:35'),
+(130, 1, 8, 9, 'Product quantity modified from 84.9 to 84.925', '127.0.0.1', '2017-05-01 17:07:35'),
+(131, 1, 8, 1, 'Product quantity modified from 169.5 to 170.5', '127.0.0.1', '2017-05-01 17:07:38'),
+(132, 1, 8, 28, 'Product quantity modified from 1.001 to 1.011', '127.0.0.1', '2017-05-01 17:07:38'),
+(133, 1, 8, 9, 'Product quantity modified from 84.925 to 84.95', '127.0.0.1', '2017-05-01 17:07:38'),
+(134, 1, 8, 1, 'Product quantity modified from 170.5 to 171.5', '127.0.0.1', '2017-05-01 17:07:40'),
+(135, 1, 8, 28, 'Product quantity modified from 1.011 to 1.021', '127.0.0.1', '2017-05-01 17:07:40'),
+(136, 1, 8, 9, 'Product quantity modified from 84.95 to 84.975', '127.0.0.1', '2017-05-01 17:07:40'),
+(137, 1, 8, 1, 'Product quantity modified from 171.5 to 172.5', '127.0.0.1', '2017-05-01 17:07:41'),
+(138, 1, 8, 28, 'Product quantity modified from 1.021 to 1.031', '127.0.0.1', '2017-05-01 17:07:41'),
+(139, 1, 8, 9, 'Product quantity modified from 84.975 to 85', '127.0.0.1', '2017-05-01 17:07:41'),
+(140, 1, 8, 1, 'Product quantity modified from 172.5 to 173.5', '127.0.0.1', '2017-05-01 17:07:43'),
+(141, 1, 8, 28, 'Product quantity modified from 1.031 to 1.041', '127.0.0.1', '2017-05-01 17:07:43'),
+(142, 1, 8, 9, 'Product quantity modified from 85 to 85.025', '127.0.0.1', '2017-05-01 17:07:43'),
+(143, 1, 8, 1, 'Product quantity modified from 173.5 to 174.5', '127.0.0.1', '2017-05-01 17:10:55'),
+(144, 1, 8, 28, 'Product quantity modified from 1.041 to 1.051', '127.0.0.1', '2017-05-01 17:10:55'),
+(145, 1, 8, 9, 'Product quantity modified from 85.025 to 85.05', '127.0.0.1', '2017-05-01 17:10:55'),
+(146, 1, 3, 28, 'Product {praf, Afghanistan, 1.051, kilograms} modified to {praf, Afghanistan, 1.151, kilograms}', '127.0.0.1', '2017-05-01 17:11:15'),
+(147, 2, 1, NULL, 'Jane Roe[janeroe] has logged in', '127.0.0.1', '2017-05-01 17:16:30'),
+(148, 2, 3, 19, 'Product {Mouse, China, 20, pieces} modified to {Mouse, China, 21, pieces}', '127.0.0.1', '2017-05-01 17:17:42'),
+(149, 2, 8, 30, 'Product added', '127.0.0.1', '2017-05-01 17:18:22'),
+(150, 2, 4, 30, 'Product {asdf, Bahamas, 3, kilograms} deleted', '127.0.0.1', '2017-05-01 17:18:36');
 
 -- --------------------------------------------------------
 
@@ -424,17 +515,19 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`ID`, `Name`, `Country_ID`, `Quantity`, `Unit_of_measure_ID`, `Last_modified_by_employee_ID`, `Last_time_modified`) VALUES
-(1, 'Portocale', 181, 160, 1, 2, '2017-04-30 10:03:46'),
+(1, 'Portocale', 181, 174.5, 1, 1, '2017-05-01 17:10:55'),
 (2, 'Banane', 106, 120, 1, 2, '2017-04-23 16:16:49'),
 (10, 'Rosii', 222, 100, 1, 1, '2017-04-26 16:28:59'),
-(9, 'Mere', 181, 85, 1, 1, '2017-04-23 20:37:17'),
+(9, 'Mere', 181, 85.05, 1, 1, '2017-05-01 17:10:55'),
 (11, 'Caiet', 33, 40, 2, 1, '2017-04-23 21:07:23'),
 (12, 'Pix', 144, 0.76, 1, 2, '2017-04-30 09:59:58'),
-(13, 'Guma mestecat', 181, 300, 2, 2, '2017-04-23 21:49:28'),
-(14, 'Coli A4', 44, 1000, 2, 2, '2017-04-26 17:06:02'),
+(13, 'Guma mestecat', 181, 215, 2, 2, '2017-04-30 17:28:52'),
+(14, 'Coli A4', 44, 1075, 2, 2, '2017-04-30 17:28:52'),
 (15, 'Coli A3', 44, 550, 2, 2, '2017-04-30 07:12:52'),
-(19, 'Mouse', 44, 20, 2, 4, '2017-04-27 17:31:15'),
-(18, 'Apa minerala', 181, 210, 2, 1, '2017-04-30 06:44:27');
+(19, 'Mouse', 44, 21, 2, 2, '2017-05-01 17:17:42'),
+(18, 'Apa minerala', 181, 210, 2, 1, '2017-04-30 06:44:27'),
+(28, 'praf', 1, 1.151, 1, 1, '2017-05-01 17:11:15'),
+(29, 'covor', 181, 10, 2, 2, '2017-04-30 17:28:52');
 
 -- --------------------------------------------------------
 
@@ -509,7 +602,7 @@ ALTER TABLE `units_of_measure`
 -- AUTO_INCREMENT for table `action_type`
 --
 ALTER TABLE `action_type`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `countries`
 --
@@ -524,12 +617,12 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `employee_log`
 --
 ALTER TABLE `employee_log`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `units_of_measure`
 --
