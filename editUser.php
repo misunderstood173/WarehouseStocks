@@ -1,8 +1,6 @@
 <?php
-include('userconnectedcheck.php');
-if (!isset($_SESSION['admin'])) {
-  die('You are not admin.' . '<br>' . '<p><a href="warehouse.php">Go to Warehouse</a></p>');
-}
+require 'userconnectedcheck.php';
+require 'adminconnectedcheck.php';
 ?>
 
 <!doctype html>

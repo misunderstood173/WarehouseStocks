@@ -1,5 +1,6 @@
 <?php
-include('userconnectedcheck.php');
+require 'userconnectedcheck.php';
+require 'adminconnectedcheck.php';
 ?>
 
 <!doctype html>

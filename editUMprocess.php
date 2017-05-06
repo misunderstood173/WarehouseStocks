@@ -1,6 +1,7 @@
 <title>Edit Unit of Measure</title>
 <?php
-include('userconnectedcheck.php');
+require 'userconnectedcheck.php';
+require 'adminconnectedcheck.php';
 
 if (isset($_POST['um_id']) && isset($_POST['um_name']) && isset($_POST['um_abbreviation'])) {
   $um_id = $_POST['um_id'];

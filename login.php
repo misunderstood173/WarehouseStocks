@@ -1,7 +1,10 @@
 <?php
 session_start();
 if (isset($_SESSION['user']) && $_SESSION['user'] != '')
-die('You are already logged in. Go to the <a href="warehouse.php">Warehouse</a>');
+{
+	echo "<title>Warehouse</title>";
+	die('You are already logged in. Go to the <a href="warehouse.php">Warehouse</a>');
+}
 ?>
 
 <!doctype html>

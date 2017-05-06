@@ -1,6 +1,7 @@
 <title>Edit User</title>
 <?php
 require 'userconnectedcheck.php';
+require 'adminconnectedcheck.php';
 
 if (isset($_POST['user_id']) && isset($_POST['full_name']) && isset($_POST['username']) && isset($_POST['password'])) {
   $user_id = $_POST['user_id'];
