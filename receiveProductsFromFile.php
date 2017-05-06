@@ -1,6 +1,14 @@
 <?php
 include('userconnectedcheck.php');
 
+if (isset($_POST['JSON'])) {
+  $products = json_decode($_POST['products'], true);
+  include 'warehouseActions.php';
+  receiveProducts($products);
+  echo "Products received";
+  die('<p><a href="receive.php">Go back</a></p>');
+}
+
 if (!isset($_FILES["JSONfile"])) {
   die('No JSON file uploaded');
 }
@@ -30,8 +38,18 @@ $products = json_decode(file_get_contents($target_file), true);
 if ($products == NULL) {
   die("Can't decode JSON file");
 }
-
-include 'warehouseActions.php';
-receiveProducts($products);
-echo "Products received";
 ?>
+
+<h3>Products from file</h3>
+
+<?php
+include 'productsPreview.php';
+previewProducts($products);
+
+?>
+
+<form id="products" method="post" action="#">
+      <input type="hidden" name="JSON" value="json_arrays" >
+      <input type="hidden" name="products" value=' <?php echo json_encode($products, true); ?> ' >
+      <input type="submit" name="btnReceive" value="Receive products">
+</form>
