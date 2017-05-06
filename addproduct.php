@@ -1,5 +1,5 @@
 <?php
-include('userconnectedcheck.php');
+require('userconnectedcheck.php');
 ?>
 
 <!doctype html>
@@ -12,7 +12,7 @@ include('userconnectedcheck.php');
 </head>
 <body>
 <?php
-include 'menu.php';
+require 'menu.php';
 echo buildDefaultMenu();
 ?>
  <h3>Add a product</h3>
@@ -27,8 +27,8 @@ $product_name = $product_country_id = $product_quantity = $product_UM_id = '';
         $product_quantity = trim($_POST['product_quantity']);
         $product_UM_id = trim($_POST['product_UM_id']);
         if ($product_name != '' && $product_country_id != '' && $product_quantity != '' && $product_UM_id != '') {
-        include 'connection.php';
-				include 'productsActions.php';
+        require 'connection.php';
+				require 'productsActions.php';
 
 				$desc = '';
 				$product = checkIfProductExists($conn, $product_name, $product_country_id, $product_UM_id);
@@ -48,7 +48,7 @@ $product_name = $product_country_id = $product_quantity = $product_UM_id = '';
 					//log action
 					$stmt = $conn->prepare('INSERT INTO employee_log (employee_ID, action_type_ID, product_modified_ID, description, ip_address)
 												VALUES (:employee_ID, 2, :product_id, :description, :ip)');
-					include 'ipaddress.php';
+					require 'ipaddress.php';
 					$ip = get_client_ip();
 					$stmt->bindParam(':employee_ID', $_SESSION['ID']);
 					$stmt->bindParam(':product_id', $product_id);
@@ -78,7 +78,7 @@ $product_name = $product_country_id = $product_quantity = $product_UM_id = '';
   <div class="inputField">
 		<label for="product_country_id">Country of Origin: </label>
 		<select name="product_country_id" tabindex="2">
-	    <?php include("countries.php");
+	    <?php require("countries.php");
 						$countries = AllCountries();
 						foreach ($countries as $key => $value) {
 				        echo '<option value="' . $key . '">' . $value . '</option>';
@@ -94,7 +94,7 @@ $product_name = $product_country_id = $product_quantity = $product_UM_id = '';
   <div class="inputField">
 		<label for="product_UM_id">Unit of measure: </label>
 		<select name="product_UM_id" tabindex="4">
-      <?php include("unitsofmeasure.php");
+      <?php require("unitsofmeasure.php");
 						$units_of_measure = AllUnitsOfMeasure();
 						foreach ($units_of_measure as $key => $value) {
 				        echo '<option value="' . $key . '">' . $value . '</option>';

@@ -2,7 +2,7 @@
 function AllUnitsOfMeasure()
 {
   try {
-    include "connection.php";
+    require "connection.php";
 
     $stmt = $conn->prepare(
       "SELECT units_of_measure.ID, units_of_measure.unit_name FROM units_of_measure"

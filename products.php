@@ -1,5 +1,5 @@
 <?php
-include('userconnectedcheck.php');
+require('userconnectedcheck.php');
 ?>
 
 <!doctype html>
@@ -11,7 +11,7 @@ include('userconnectedcheck.php');
 </head>
 <body>
 <?php
-include 'menu.php';
+require 'menu.php';
 echo buildDefaultMenu();
 ?>
  <h3>All Warehouse Products</h3>
@@ -30,7 +30,7 @@ echo "<tr>
       </tr>";
 
 try {
-	include "connection.php";
+	require "connection.php";
 
   $stmt = $conn->prepare(
     "SELECT products.ID, products.Name, countries.country_name, products.Quantity,

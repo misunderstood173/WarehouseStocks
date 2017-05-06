@@ -10,7 +10,7 @@ if (isset($_POST['um_id']) && isset($_POST['um_name']) && isset($_POST['um_abbre
 
   try {
     if ($um_name != '' && $um_abbreviation != '') {
-      include 'connection.php';
+      require 'connection.php';
 
       $sql = $conn->prepare(
         "UPDATE units_of_measure SET unit_name = :um_name, Abbreviation = :um_abbreviation

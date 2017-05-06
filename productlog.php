@@ -1,5 +1,5 @@
 <?php
-include('userconnectedcheck.php');
+require('userconnectedcheck.php');
 ?>
 
 <!doctype html>
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo '<h2>' . $productInfo . '</h2>';
 
   try {
-    include "connection.php";
+    require "connection.php";
 
     $stmt = $conn->prepare(
       "SELECT CONCAT(employees.Full_name, ' [', employees.username, ']') AS 'Employee', employee_log.employee_ID,

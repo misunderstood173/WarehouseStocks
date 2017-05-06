@@ -2,7 +2,7 @@
 function AllCountries()
 {
   try {
-    include "connection.php";
+    require "connection.php";
     $stmt = $conn->prepare(
       "SELECT countries.ID, countries.country_name FROM countries"
       );

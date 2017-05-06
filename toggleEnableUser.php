@@ -4,7 +4,7 @@ require 'adminconnectedcheck.php';
 
 if (isset($_POST['user_id'])) {
   try {
-    include "connection.php";
+    require "connection.php";
 
     $user = getUserByID($conn, $_POST['user_id']);
 

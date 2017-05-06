@@ -1,6 +1,6 @@
 <title>Update Product</title>
 <?php
-include('userconnectedcheck.php');
+require('userconnectedcheck.php');
 
 $product_id = trim($_POST['product_id']);
 //new attributes
@@ -17,10 +17,10 @@ $old_product_UM = $_POST['old_product_UM'];
 
 try {
   if ($product_name != '' && $product_country != '' && $product_quantity != '' && $product_UM != '') {
-    include 'connection.php';
-    include 'getIDqueries.php';
-    include 'productsActions.php';
-    include 'menu.php';
+    require 'connection.php';
+    require 'getIDqueries.php';
+    require 'productsActions.php';
+    require 'menu.php';
     echo buildDefaultMenu();
 
     $UM_ID = getUnitOfMeasureID($conn, $product_UM);
@@ -36,7 +36,7 @@ try {
     $descFormat = 'Product {%s, %s, %s, %s} modified to {%s, %s, %s, %s}';
     $desc = sprintf($descFormat, $old_product_name, $old_product_country, $old_product_quantity, $old_product_UM,
                   $product_name, $product_country, $product_quantity, $product_UM);
-    include 'ipaddress.php';
+    require 'ipaddress.php';
     $ip = get_client_ip();
     $stmt->bindParam(':employee_ID', $employee_ID);
     $stmt->bindParam(':product_id', $product_id);

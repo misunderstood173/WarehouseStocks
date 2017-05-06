@@ -12,7 +12,7 @@ require 'adminconnectedcheck.php';
 </head>
 <body>
 <?php
-include 'menu.php';
+require 'menu.php';
 echo buildDefaultMenu();
 ?>
 <h3>All Warehouse Units of Measure</h3>
@@ -27,7 +27,7 @@ echo "<tr>
       </tr>";
 
 try {
-  include "connection.php";
+  require "connection.php";
   $stmt = $conn->prepare(
     'SELECT units_of_measure.ID, units_of_measure.unit_name, units_of_measure.Abbreviation
     FROM units_of_measure'

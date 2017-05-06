@@ -11,7 +11,7 @@ require 'adminconnectedcheck.php';
 </head>
 <body>
 <?php
-  include 'menu.php';
+  require 'menu.php';
   echo buildDefaultMenu();
 ?>
   <h3>Add new user</h3>
@@ -26,8 +26,8 @@ $full_name = $username = $password = '';
         $username = trim($_POST['username']);
         $password = trim($_POST['password']);
         if ($full_name != '' && $username != '' && $password != '') {
-          include 'connection.php';
-					include 'getIDqueries.php';
+          require 'connection.php';
+					require 'getIDqueries.php';
 
           $sql = $conn->prepare(
             "INSERT INTO employees (Full_name, username, password) VALUES (:full_name, :user, :pass)"
@@ -43,7 +43,7 @@ $full_name = $username = $password = '';
 					$last_id = $conn->lastInsertId();
 					$descFormat = 'New user added {full_name:%s , username:%s}';
           $desc = sprintf($descFormat, $full_name, $username);
-					include 'ipaddress.php';
+					require 'ipaddress.php';
 					$ip = get_client_ip();
 					$stmt->bindParam(':employee_ID', $employee_ID);
 					$stmt->bindParam(':description', $desc);

@@ -2,8 +2,8 @@
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
   try {
-    include "connection.php";
-    include 'productsActions.php';
+    require "connection.php";
+    require 'productsActions.php';
 
     if (isset($_POST['JSON'])) {
       $_POST['product'] = json_decode($_POST['product'], true);
@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       $products['product_UM_id'][] = $prod['Unit_of_measure_ID'];
 		}
 
-    include 'downloadVariableJSON.php';
+    require 'downloadVariableJSON.php';
     downloadVariableWithName($products, 'dispatchTemplate');
 
     } catch (PDOException  $e) {

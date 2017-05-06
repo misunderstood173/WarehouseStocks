@@ -1,5 +1,5 @@
 <?php
-include('userconnectedcheck.php');
+require('userconnectedcheck.php');
 ?>
 
 <!doctype html>
@@ -11,7 +11,7 @@ include('userconnectedcheck.php');
 </head>
 <body>
 <?php
-include 'menu.php';
+require 'menu.php';
 echo buildDefaultMenu();
 ?>
 	<h3>Receive products</h3>
@@ -19,7 +19,7 @@ echo buildDefaultMenu();
 <?php
 	if($_SERVER["REQUEST_METHOD"] == "POST")
   {
-    include 'warehouseActions.php';
+    require 'warehouseActions.php';
     receiveProducts($_POST);
 
     die('Products received !' . '');
@@ -46,13 +46,13 @@ echo buildDefaultMenu();
 </div>
 
 <script type="text/javascript">
-countries = <?php include("countries.php"); echo json_encode(AllCountries()); ?>;
+countries = <?php require("countries.php"); echo json_encode(AllCountries()); ?>;
 countriesOptions = '';
 for (var index in countries) {
   countriesOptions += '<option value="' + index + '">' + countries[index] + '</option>' + '\n';
 }
 
-unitsOfMeasure = <?php include("unitsofmeasure.php"); echo json_encode(AllUnitsOfMeasure()); ?>;
+unitsOfMeasure = <?php require("unitsofmeasure.php"); echo json_encode(AllUnitsOfMeasure()); ?>;
 UMoptions = '';
 for (var index in unitsOfMeasure) {
   UMoptions += '<option value="' + index + '">' + unitsOfMeasure[index] + '</option>' + '\n';

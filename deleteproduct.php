@@ -1,5 +1,5 @@
 <?php
-include('userconnectedcheck.php');
+require('userconnectedcheck.php');
 ?>
 
 <!doctype html>

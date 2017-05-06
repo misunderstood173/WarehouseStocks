@@ -8,11 +8,11 @@
   <body>
 
 <?php
-include('userconnectedcheck.php');
+require('userconnectedcheck.php');
 
 if (isset($_POST['JSON'])) {
   $products = json_decode($_POST['products'], true);
-  include 'warehouseActions.php';
+  require 'warehouseActions.php';
   receiveProducts($products);
   echo "Products received";
   die('<p><a href="receive.php">Go back</a></p>');

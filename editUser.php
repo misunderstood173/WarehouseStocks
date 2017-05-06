@@ -11,7 +11,7 @@ require 'adminconnectedcheck.php';
 </head>
 <body>
 <?php
-  include 'menu.php';
+  require 'menu.php';
   echo buildDefaultMenu();
 ?>
 

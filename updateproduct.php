@@ -1,5 +1,5 @@
 <?php
-include('userconnectedcheck.php');
+require('userconnectedcheck.php');
 ?>
 
 <!doctype html>
@@ -11,7 +11,7 @@ include('userconnectedcheck.php');
 </head>
 <body>
 <?php
-	 include 'menu.php';
+	 require 'menu.php';
 	 echo buildDefaultMenu();
 ?>
 	 <h3>Update product</h3>
@@ -40,7 +40,7 @@ $product_UM = $_POST['product_UM'];
    <div class="inputField">
  		<label for="product_country">Country of Origin: </label>
  		<select name="product_country" tabindex="2">
-	     <?php include("countries.php");
+	     <?php require("countries.php");
 				 $countries = AllCountries();
 				 foreach ($countries as $value) {
 					 $selected = '';
@@ -60,7 +60,7 @@ $product_UM = $_POST['product_UM'];
    <div class="inputField">
  		<label for="product_UM">Unit of measure: </label>
  		<select name="product_UM" tabindex="4">
-       <?php include("unitsofmeasure.php");
+       <?php require("unitsofmeasure.php");
 				 $units_of_measure = AllUnitsOfMeasure();
 				 foreach ($units_of_measure as $value) {
 						$selected = '';

@@ -11,7 +11,7 @@ if (isset($_POST['user_id']) && isset($_POST['full_name']) && isset($_POST['user
 
   try {
     if ($user_full_name != '' && $username != '' && $password != '') {
-      include 'connection.php';
+      require 'connection.php';
 
       $sql = $conn->prepare(
         "UPDATE employees SET Full_name = :user_full_name, username = :username, password = :password

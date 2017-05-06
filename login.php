@@ -22,7 +22,7 @@ if (isset($_SESSION['user']) && $_SESSION['user'] != '')
 		$password = test_input($_POST["password"]);
 
 		try {
-			include "connection.php";
+			require "connection.php";
 
 			$stmt = $conn->prepare("SELECT employees.ID, employees.Full_name, employees.account_type, employees.enabled FROM employees
 															WHERE employees.username=:username AND employees.password=:password");
@@ -46,7 +46,7 @@ if (isset($_SESSION['user']) && $_SESSION['user'] != '')
 				$stmt = $conn->prepare('INSERT INTO employee_log (employee_ID, action_type_ID, description, ip_address)
 											VALUES (:id, 1, :description, :ip)');
 				$desc = $row['Full_name'] . '[' . $username . '] has logged in';
-				include 'ipaddress.php';
+				require 'ipaddress.php';
 				$ip = get_client_ip();
 				$stmt->bindParam(':id', $row['ID']);
 				$stmt->bindParam(':description', $desc);

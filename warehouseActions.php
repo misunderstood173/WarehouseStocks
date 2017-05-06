@@ -3,8 +3,8 @@ require 'productsActions.php';
 function receiveProducts($products)
 {
   try {
-    include "connection.php";
-    include 'ipaddress.php';
+    require "connection.php";
+    require 'ipaddress.php';
 
     $length = count($products['product_name']);
 
@@ -49,8 +49,8 @@ function receiveProducts($products)
 function dispatchProducts($allProducts, $required_products)
 {
 	try {
-		include "connection.php";
-		include 'ipaddress.php';
+		require "connection.php";
+		require 'ipaddress.php';
 
 		$length = count($required_products['ids']);
 		//check quantities

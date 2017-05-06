@@ -1,5 +1,5 @@
 <?php
-include('userconnectedcheck.php');
+require('userconnectedcheck.php');
 ?>
 
 <!doctype html>
@@ -10,14 +10,14 @@ include('userconnectedcheck.php');
 </head>
 <body>
 <?php
-include 'menu.php';
+require 'menu.php';
 echo buildDefaultMenu();
 ?>
 	<h3>Dispatch products</h3>
 
 <?php
 
-include 'productsProvider.php';
+require 'productsProvider.php';
 $products = array();
 try {
 	$products = getAllProducts();
@@ -29,7 +29,7 @@ try {
   {
 		$required_products = array('ids' => $_POST['product'],
 															 'quantities' => $_POST['quantity']);
-		include 'warehouseActions.php';
+		require 'warehouseActions.php';
 		dispatchProducts($products, $required_products);
 
    	die('Dispatch complete !'

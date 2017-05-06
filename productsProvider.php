@@ -2,7 +2,7 @@
 function getAllProducts()
 {
   try {
-    include "connection.php";
+    require "connection.php";
 
     $stmt = $conn->prepare(
       "SELECT products.ID, products.Name, countries.country_name, products.Quantity,

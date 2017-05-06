@@ -6,9 +6,9 @@
 </head>
 <body>
 <?php
-include('userconnectedcheck.php');
+require('userconnectedcheck.php');
 
-include 'menu.php';
+require 'menu.php';
 $menuArray = array(
 				'dispatch.php' => 'Dispatch',
 				'receive.php' => 'Receive',

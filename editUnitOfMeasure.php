@@ -13,7 +13,7 @@ require 'adminconnectedcheck.php';
 
 
 <?php
-include 'menu.php';
+require 'menu.php';
 echo buildDefaultMenu();
 if (!isset($_POST['um_id'])) {
   die();

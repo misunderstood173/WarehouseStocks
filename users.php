@@ -12,7 +12,7 @@ require 'adminconnectedcheck.php';
 </head>
 <body>
 <?php
-include 'menu.php';
+require 'menu.php';
 echo buildDefaultMenu();
 ?>
 <h3>All Warehouse Users</h3>
@@ -30,7 +30,7 @@ echo "<tr>
       </tr>";
 
 try {
-  include "connection.php";
+  require "connection.php";
   $stmt = $conn->prepare(
     'SELECT employees.ID, employees.Full_name, employees.username,
 	     employees.password, employees.account_type,

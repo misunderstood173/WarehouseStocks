@@ -1,5 +1,5 @@
 <?php
-include('userconnectedcheck.php');
+require('userconnectedcheck.php');
 ?>
 
 <!doctype html>
@@ -20,7 +20,7 @@ $productInfo = $product_name . ', ' . $product_country . ', '
             . $product_quantity . ', ' . $product_UM;
 
 try {
-  include "connection.php";
+  require "connection.php";
 
   $stmt = $conn->prepare(
     "DELETE FROM products WHERE products.ID = :product_id"
@@ -36,7 +36,7 @@ try {
   $descFormat = 'Product {%s} deleted';
   $desc = sprintf($descFormat, $productInfo);
   $employee_ID = $_SESSION['ID'];
-  include 'ipaddress.php';
+  require 'ipaddress.php';
   $ip = get_client_ip();
   $stmt->bindParam(':employee_ID', $employee_ID);
   $stmt->bindParam(':product_id', $product_id);

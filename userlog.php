@@ -1,5 +1,5 @@
 <?php
-include('userconnectedcheck.php');
+require('userconnectedcheck.php');
 $user = $_SESSION['user'];
 $user_id = $_SESSION['ID'];
 if (isset($_POST['user_id']) && isset($_POST['user_full_name'])) {
@@ -17,7 +17,7 @@ if (isset($_POST['user_id']) && isset($_POST['user_full_name'])) {
 </head>
 <body>
 <?php
-include 'menu.php';
+require 'menu.php';
 echo buildDefaultMenu();
 ?>
 	<h3><?php echo $user. "'s log"; ?></h3>
@@ -33,7 +33,7 @@ echo "<tr>
       </tr>";
 
 try {
-  include "connection.php";
+  require "connection.php";
   $stmt = $conn->prepare(
     "SELECT action_type.type, employee_log.description,  employee_log.product_modified_ID,
     employee_log.log_time ,employee_log.ip_address
