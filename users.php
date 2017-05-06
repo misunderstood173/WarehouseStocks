@@ -50,6 +50,7 @@ try {
       <td>%s</td>
   		<td>
   	 	 	<input type="submit" formaction="toggleEnableUser.php" value="Enable/Disable">
+        <input type="submit" formaction="editUser.php" value="Edit">
         <input type="submit" formaction="userlog.php" value="View log">
   		</td>
   	 </tr>

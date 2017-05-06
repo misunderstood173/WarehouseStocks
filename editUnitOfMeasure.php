@@ -13,6 +13,9 @@ include('userconnectedcheck.php');
 <?php
 include 'menu.php';
 echo buildDefaultMenu();
+if (!isset($_POST['um_id'])) {
+  die();
+}
 
 try {
   require 'connection.php';

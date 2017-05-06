@@ -1,5 +1,8 @@
 <?php
 include('userconnectedcheck.php');
+if (!isset($_SESSION['admin'])) {
+  die('You are not admin.' . '<br>' . '<p><a href="warehouse.php">Go to Warehouse</a></p>');
+}
 
 if (isset($_POST['user_id'])) {
   try {

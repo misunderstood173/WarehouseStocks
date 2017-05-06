@@ -65,15 +65,15 @@ $full_name = $username = $password = '';
 <form method="post" action="#">
 	<div class="inputField">
 		<label for="full_name">Full name: </label>
-		<input type="text" name="full_name" maxlength="255" tabindex="1" value="<?php echo $full_name; ?>">
+		<input type="text" name="full_name" id="full_name" maxlength="255" tabindex="1" value="<?php echo $full_name; ?>">
 	</div>
   <div class="inputField">
 		<label for="username">Username: </label>
-		<input list='countries' name="username" tabindex="2" value="<?php echo $username; ?>">
+		<input type="text" name="username" id="username" tabindex="2" value="<?php echo $username; ?>">
 	</div>
   <div class="inputField">
 		<label for="password">Password: </label>
-		<input type="text" name="password" tabindex="3" value="<?php echo $password; ?>">
+		<input type="text" name="password" id="password" tabindex="3" value="<?php echo $password; ?>">
 	</div>
 	<input type="submit" name="btnAddUser" value="Add New User" tabindex="4">
 </form>
