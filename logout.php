@@ -12,5 +12,5 @@
       echo 'You are not logged in!';
     }
     echo '<br>';
-    echo '<a href=login.php>Go to Login page</a>';
+    echo '<a href=index.html>Go to homepage</a>';
  ?>

@@ -9,11 +9,13 @@ include('userconnectedcheck.php');
 	<script type="text/javascript"  src="js/inputCheck.js"></script>
 </head>
 <body>
-	<h2>Receive products</h2>
 <?php
 include 'menu.php';
 echo buildDefaultMenu();
+?>
+	<h3>Receive products</h3>
 
+<?php
 	if($_SERVER["REQUEST_METHOD"] == "POST")
   {
     include 'warehouseActions.php';
@@ -31,12 +33,12 @@ echo buildDefaultMenu();
 	</form>
 </div>
 
-<form id="products" method="post" action="">
+<form id="products" method="post" action="#">
 
 </form>
 
 <div class="products">
-	<form id="products" method="post" action="">
+	<form id="products" method="post" action="#">
 	</form>
 
 	<button type="button" name="btnAddProduct" onClick="addProduct()">Add Entry</button>

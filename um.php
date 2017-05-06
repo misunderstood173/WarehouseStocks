@@ -12,11 +12,12 @@ if (!isset($_SESSION['admin'])) {
 </head>
 <body>
 <?php
-
 include 'menu.php';
 echo buildDefaultMenu();
-echo '<h2>All Warehouse Units of Measure</h2>';
+?>
+<h3>All Warehouse Units of Measure</h3>
 
+<?php
 echo "<table>";
 echo "<tr>
       <th>ID</th>

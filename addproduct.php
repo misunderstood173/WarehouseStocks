@@ -13,6 +13,9 @@ include('userconnectedcheck.php');
 <?php
 include 'menu.php';
 echo buildDefaultMenu();
+?>
+ <h3>Add a product</h3>
+<?php
 
 $product_name = $product_country_id = $product_quantity = $product_UM_id = '';
     if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -66,7 +69,7 @@ $product_name = $product_country_id = $product_quantity = $product_UM_id = '';
       }
 
 ?>
-<form method="post" action="">
+<form method="post" action="#">
 	<div class="inputField">
 		<label for="product_name">Product name: </label>
 		<input type="text" name="product_name" maxlength="255" tabindex="1">

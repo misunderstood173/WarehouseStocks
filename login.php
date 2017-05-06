@@ -10,6 +10,7 @@ die('You are already logged in. Go to the <a href="warehouse.php">Warehouse</a>'
 	<title>Log In to Warehouse</title>
 </head>
 <body>
+	<h3>Log In to Warehouse</h3>
 <?php
 	$username = "";
 

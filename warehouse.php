@@ -5,7 +5,6 @@
 	<title>Warehouse</title>
 </head>
 <body>
-	<h2>Warehouse</h2>
 <?php
 include('userconnectedcheck.php');
 

@@ -9,9 +9,14 @@ include('userconnectedcheck.php');
 	<script type="text/javascript"  src="js/inputCheck.js"></script>
 </head>
 <body>
-
+<?php
+	 include 'menu.php';
+	 echo buildDefaultMenu();
+?>
+	 <h3>Update product</h3>
 
 <?php
+
 $product_id = $_POST['product_id'];
 $product_name = $_POST['product_name'];
 $product_country = $_POST['product_country'];
@@ -69,8 +74,5 @@ $product_UM = $_POST['product_UM'];
  	</div>
  	<input type="submit" name="btnUpdateProduct" value="Update Product" tabindex="5">
  </form>
- 	<?php include 'menu.php';
- 				echo buildDefaultMenu();
- 	?>
  </body>
  </html>

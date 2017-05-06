@@ -8,10 +8,13 @@ include('userconnectedcheck.php');
 	<title>Dispatch</title>
 </head>
 <body>
-	<h2>Dispatch products</h2>
 <?php
 include 'menu.php';
 echo buildDefaultMenu();
+?>
+	<h3>Dispatch products</h3>
+
+<?php
 
 include 'productsProvider.php';
 $products = array();
@@ -29,7 +32,7 @@ try {
 		dispatchProducts($products, $required_products);
 
    	die('Dispatch complete !'
-				. '<form id="products" method="post" action="">
+				. '<form id="products" method="post">
 							<input type="hidden" name="JSON" value="json_arrays" >
 							<input type="hidden" name="product" value=\'' . json_encode($_POST['product'], true) . '\' >
 							<input type="hidden" name="quantity" value=\'' . json_encode($_POST['quantity'], true) . '\' >
@@ -39,7 +42,7 @@ try {
 	}
 
 ?>
-<form id="products" method="post" action="">
+<form id="products" method="post" action="#">
 </form>
 
 <button type="button" name="btnAddProduct" onclick="addProduct()">Add Entry</button>

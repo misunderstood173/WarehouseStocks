@@ -13,6 +13,9 @@ $user_id = $_SESSION['ID'];
 <?php
 include 'menu.php';
 echo buildDefaultMenu();
+?>
+	<h3><?php echo $user. "'s log"; ?></h3>
+<?php
 
 echo "<table>";
 echo "<tr>
@@ -22,8 +25,6 @@ echo "<tr>
       <th>Log time</th>
       <th>IP address</th>
       </tr>";
-
-echo $user. "'s log" .'<br>';
 
 try {
   include "connection.php";

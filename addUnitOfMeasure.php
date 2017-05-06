@@ -10,8 +10,12 @@ include('userconnectedcheck.php');
 </head>
 <body>
 <?php
-include 'menu.php';
-echo buildDefaultMenu();
+	include 'menu.php';
+	echo buildDefaultMenu();
+?>
+	<h3>Add a unit of measure</h3>
+
+<?php
 
   if(isset($_POST['um_name']) && isset($_POST['um_abbreviation']))
   {

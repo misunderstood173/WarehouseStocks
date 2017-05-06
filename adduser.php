@@ -12,9 +12,12 @@ if (!isset($_SESSION['admin'])) {
 </head>
 <body>
 <?php
-include 'menu.php';
-echo buildDefaultMenu();
+  include 'menu.php';
+  echo buildDefaultMenu();
+?>
+  <h3>Add new user</h3>
 
+<?php
 $full_name = $username = $password = '';
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
@@ -59,7 +62,7 @@ $full_name = $username = $password = '';
         }
       }
 ?>
-<form method="post" action="">
+<form method="post" action="#">
 	<div class="inputField">
 		<label for="full_name">Full name: </label>
 		<input type="text" name="full_name" maxlength="255" tabindex="1" value="<?php echo $full_name; ?>">

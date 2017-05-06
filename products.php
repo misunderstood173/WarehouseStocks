@@ -9,9 +9,11 @@ include('userconnectedcheck.php');
 </head>
 <body>
 <?php
-
 include 'menu.php';
 echo buildDefaultMenu();
+?>
+ <h3>All Warehouse Products</h3>
+<?php
 
 echo "<table>";
 echo "<tr>

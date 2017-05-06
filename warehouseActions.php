@@ -1,9 +1,9 @@
 <?php
+require 'productsActions.php';
 function receiveProducts($products)
 {
   try {
     include "connection.php";
-    include 'productsActions.php';
     include 'ipaddress.php';
 
     $length = count($products['product_name']);

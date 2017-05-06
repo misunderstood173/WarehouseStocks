@@ -1,6 +1,8 @@
 <?php
 function buildMenu($linkCaptionDictionary)
 {
+  echo '<h2>Warehouse</h2>';
+
   $menu ='<aside><ul class="menu">';
   foreach ($linkCaptionDictionary as $link => $caption) {
     $menu .= '<li><a href="' . $link . '">' . $caption . '</a></li>';

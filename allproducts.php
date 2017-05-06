@@ -4,7 +4,7 @@
 	<title>Warehouse Products</title>
 </head>
 <body>
-  <h2>All products</h2>
+  <h3>All products in warehouse</h3>
 <?php
 
 echo "<table>";
