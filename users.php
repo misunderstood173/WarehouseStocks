@@ -50,15 +50,17 @@ try {
       <td>%s</td>
   		<td>
   	 	 	<input type="submit" formaction="toggleEnableUser.php" value="Enable/Disable">
+        <input type="submit" formaction="userlog.php" value="View log">
   		</td>
   	 </tr>
   	 <input type="hidden" name="user_id" value="%s">
+     <input type="hidden" name="user_full_name" value="%s">
   	 </form>
   	 ';
   foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $result) {
       echo sprintf($entryFormat, $result['ID'], $result['Full_name'], $result['username'],
                   $result['password'], $result['account_type'], $result['Account status'],
-                  $result['ID']);
+                  $result['ID'], $result['Full_name']);
   }
 
 } catch (PDOException  $e) {

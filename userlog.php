@@ -2,6 +2,10 @@
 include('userconnectedcheck.php');
 $user = $_SESSION['user'];
 $user_id = $_SESSION['ID'];
+if (isset($_POST['user_id']) && isset($_POST['user_full_name'])) {
+	$user = $_POST['user_full_name'];
+	$user_id = $_POST['user_id'];
+}
 ?>
 
 <!doctype html>
