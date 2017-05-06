@@ -8,7 +8,8 @@ if (!isset($_SESSION['admin'])) {
 <!doctype html>
 <html>
 <head>
-	<title>Add new user</title>
+  <meta charset="utf-8">
+	<title>Edit User</title>
 </head>
 <body>
 <?php

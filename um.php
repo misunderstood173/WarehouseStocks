@@ -8,7 +8,9 @@ if (!isset($_SESSION['admin'])) {
 <!doctype html>
 <html>
 <head>
+  <meta charset="utf-8">
 	<title>All Units of Measure</title>
+  <link rel="stylesheet" href="css/table.css">
 </head>
 <body>
 <?php

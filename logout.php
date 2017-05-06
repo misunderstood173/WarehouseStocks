@@ -1,3 +1,4 @@
+<title>Warehouse</title>
 <?php
     session_start();
     if (isset($_SESSION['user']) && isset($_SESSION["ID"])) {

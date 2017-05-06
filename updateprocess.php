@@ -1,3 +1,4 @@
+<title>Update Product</title>
 <?php
 include('userconnectedcheck.php');
 

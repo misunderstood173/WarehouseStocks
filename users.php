@@ -1,13 +1,13 @@
 <?php
-include('userconnectedcheck.php');
-if (!isset($_SESSION['admin'])) {
-  die('You are not admin.' . '<br>' . '<p><a href="warehouse.php">Go to Warehouse</a></p>');
-}
+require 'userconnectedcheck.php';
+require 'adminconnectedcheck.php';
 ?>
 
 <!doctype html>
 <html>
 <head>
+  <meta charset="utf-8">
+	<link rel="stylesheet" href="css/table.css">
 	<title>All users</title>
 </head>
 <body>

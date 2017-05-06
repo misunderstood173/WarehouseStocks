@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Warehouse Products</title>
+	<link rel="stylesheet" href="css/table.css">
 </head>
 <body>
   <h3>All products in warehouse</h3>

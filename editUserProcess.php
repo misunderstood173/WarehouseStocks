@@ -1,3 +1,4 @@
+<title>Edit User</title>
 <?php
 require 'userconnectedcheck.php';
 

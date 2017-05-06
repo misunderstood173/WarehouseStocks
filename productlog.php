@@ -5,7 +5,9 @@ include('userconnectedcheck.php');
 <!doctype html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Product <?php if (isset($_POST['product_name'])) echo $_POST['product_name']; ?> Log</title>
+	<link rel="stylesheet" href="css/table.css">
 </head>
 <body>
 

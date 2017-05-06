@@ -1,3 +1,4 @@
+<title>Edit Unit of Measure</title>
 <?php
 include('userconnectedcheck.php');
 

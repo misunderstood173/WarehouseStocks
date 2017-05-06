@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Receive Products From File</title>
+    <link rel="stylesheet" href="css/table.css">
+  </head>
+  <body>
+
 <?php
 include('userconnectedcheck.php');
 
@@ -53,3 +62,5 @@ previewProducts($products);
       <input type="hidden" name="products" value=' <?php echo json_encode($products, true); ?> ' >
       <input type="submit" name="btnReceive" value="Receive products">
 </form>
+</body>
+</html>

@@ -5,6 +5,7 @@ include('userconnectedcheck.php');
 <!doctype html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Update product</title>
 	<script type="text/javascript"  src="js/inputCheck.js"></script>
 </head>

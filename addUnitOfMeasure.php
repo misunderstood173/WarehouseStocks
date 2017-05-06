@@ -5,6 +5,7 @@ include('userconnectedcheck.php');
 <!doctype html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Add Unit of Measure</title>
 	<link rel="stylesheet" href="css/input.css">
 </head>

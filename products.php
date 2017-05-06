@@ -5,7 +5,9 @@ include('userconnectedcheck.php');
 <!doctype html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Warehouse Products</title>
+	<link rel="stylesheet" href="css/table.css">
 </head>
 <body>
 <?php

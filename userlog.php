@@ -11,6 +11,8 @@ if (isset($_POST['user_id']) && isset($_POST['user_full_name'])) {
 <!doctype html>
 <html>
 <head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/table.css">
 	<title><?php echo $user. "'s log"; ?></title>
 </head>
 <body>
