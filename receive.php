@@ -9,6 +9,7 @@ include('userconnectedcheck.php');
 	<script type="text/javascript"  src="js/inputCheck.js"></script>
 </head>
 <body>
+	<h2>Receive products</h2>
 <?php
 include 'menu.php';
 echo buildDefaultMenu();
@@ -18,23 +19,28 @@ echo buildDefaultMenu();
     include 'warehouseActions.php';
     receiveProducts($_POST);
 
-    die('Products received !');
+    die('Products received !' . '');
   }
 
 ?>
+<div class="receiveProductsFromFile">
+	<span>Receive Products From File</span>
+	<form action="receiveProductsFromFile.php" method="post" enctype="multipart/form-data">
+	    <input type="file" name="JSONfile" id="JSONfile">
+	    <input type="submit" name="btnReceive" value="Receive">
+	</form>
+</div>
+
 <form id="products" method="post" action="">
 
 </form>
 
-<form action="receiveProductsFromFile.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="JSONfile" id="JSONfile">
-    <input type="submit" name="btnReceiveProductsFromFile" value="Receive Products From File">
-</form>
+<div class="products">
+	<form id="products" method="post" action="">
+	</form>
 
-<form id="products" method="post" action="">
-</form>
-
-<button type="button" name="btnAddProduct" onClick="addProduct()">+</button>
+	<button type="button" name="btnAddProduct" onClick="addProduct()">Add Entry</button>
+</div>
 
 <script type="text/javascript">
 countries = <?php include("countries.php"); echo json_encode(AllCountries()); ?>;

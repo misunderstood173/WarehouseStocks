@@ -68,14 +68,14 @@ die('You are already logged in. Go to the <a href="warehouse.php">Warehouse</a>'
 
  ?>
 
-<form method="post" action="">
+<form method="post" action="#">
 	<div class="inputField">
 		<label for="username">Username: </label>
-		<input type="text" name="username" maxlength="32" tabindex="1" value="<?php echo $username; ?>">
+		<input type="text" id="username" name="username" maxlength="32" tabindex="1" value="<?php echo $username; ?>">
 	</div>
 	<div class="inputField">
 	<label for="password">Password: </label>
-	<input type="password" name="password" maxlength="32" tabindex="2">
+	<input type="password" id="password" name="password" maxlength="32" tabindex="2">
 	</div>
 	<input type="submit" name="btnLogIn" value="Log In" tabindex="3">
 </form>

@@ -81,4 +81,22 @@ function getProductByID($conn, $product_id)
 	}
 }
 
+function getProductQuantity($conn, $id)
+{
+	try {
+    $stmt = $conn->prepare(
+      "SELECT products.Quantity
+			FROM products
+			WHERE products.ID = :id"
+      );
+		$stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+		return floatval($stmt->fetch(PDO::FETCH_ASSOC)['Quantity']);
+
+  } catch (PDOException  $e) {
+    throw new PDOException("Can't get product quantity" . $e->getMessage());
+  }
+}
+
 ?>

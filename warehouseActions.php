@@ -81,4 +81,36 @@ function dispatchProducts($allProducts, $required_products)
 			die($e->getMessage());
 		}
 }
+
+function updateProductQuantity($conn, $product, $new_product_quantity)
+{
+	$employee_ID = $_SESSION['ID'];
+	$old_product_quantity = $product['quantity'];
+	try {
+		$sql = $conn->prepare(
+			"UPDATE products SET Quantity = :product_quantity, Last_modified_by_employee_ID = :employee_ID WHERE products.ID = :product_id"
+			);
+		$sql->bindParam(':product_quantity', $new_product_quantity);
+		$sql->bindParam(':employee_ID', $employee_ID);
+		$sql->bindParam(':product_id', $product['ID']);
+		$sql->execute();
+
+		$product['quantity'] = $new_product_quantity;
+
+		//log action
+		$stmt = $conn->prepare('INSERT INTO employee_log (employee_ID, action_type_ID, product_modified_ID, description, ip_address)
+									VALUES (:employee_ID, 7, :product_id, :description, :ip)');
+
+		$descFormat = 'Product quantity modified from %s to %s';
+		$desc = sprintf($descFormat, $old_product_quantity, $new_product_quantity);
+		$ip = get_client_ip();
+		$stmt->bindParam(':employee_ID', $employee_ID);
+		$stmt->bindParam(':product_id', $product['ID']);
+		$stmt->bindParam(':description', $desc);
+		$stmt->bindParam(':ip', $ip);
+		$stmt->execute();
+	} catch (PDOException  $e) {
+    throw new PDOException("Can't dispatch product" . $e->getMessage());
+  }
+}
 ?>

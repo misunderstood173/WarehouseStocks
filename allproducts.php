@@ -50,6 +50,6 @@ try {
   echo "Connection failed: " . $e->getMessage();
 }
 ?>
-
+	<p><a href="index.html">Go back</a></p>
 </body>
 </html>
