@@ -35,17 +35,17 @@ try {
   $stmt->execute();
 
   $entryFormat =
-    '<form method="post">
-  	<tr>
+    '<tr>
   	 	<td>%s</td>
   		<td>%s</td>
   	  <td>%s</td>
   		<td>
-  	 	 	<input type="submit" formaction="editUnitOfMeasure.php" value="Edit">
+        <form method="post">
+          <input type="hidden" name="um_id" value="%s">
+  	 	    <input type="submit" formaction="editUnitOfMeasure.php" value="Edit">
+        </form>
   		</td>
   	 </tr>
-  	 <input type="hidden" name="um_id" value="%s">
-  	 </form>
   	 ';
   foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $result) {
       echo sprintf($entryFormat, $result['ID'], $result['unit_name'], $result['Abbreviation'],

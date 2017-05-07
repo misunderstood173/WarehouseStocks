@@ -39,22 +39,22 @@ try {
   $stmt->execute();
 
   $entryFormat =
-    '<form method="post">
-  	<tr>
+    '<tr>
   	 	<td>%s</td>
   		<td>%s</td>
   	  <td>%s</td>
   	  <td>%s</td>
   	  <td>%s</td>
   		<td>
-  	 	 	<input type="submit" formaction="toggleEnableUser.php" value="Enable/Disable">
-        <input type="submit" formaction="editUser.php" value="Edit">
-        <input type="submit" formaction="userlog.php" value="View log">
+        <form method="post">
+     	    <input type="hidden" name="user_id" value="%s">
+          <input type="hidden" name="user_full_name" value="%s">
+    	 	 	<input type="submit" formaction="toggleEnableUser.php" value="Enable/Disable">
+          <input type="submit" formaction="editUser.php" value="Edit">
+          <input type="submit" formaction="userlog.php" value="View log">
+        </form>
   		</td>
   	 </tr>
-  	 <input type="hidden" name="user_id" value="%s">
-     <input type="hidden" name="user_full_name" value="%s">
-  	 </form>
   	 ';
   foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $result) {
       echo sprintf($entryFormat, $result['ID'], $result['Full_name'], $result['username'],

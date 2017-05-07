@@ -74,11 +74,11 @@ $product_name = $product_country_id = $product_quantity = $product_UM_id = '';
 <form method="post" action="#">
 	<div class="inputField">
 		<label for="product_name">Product name: </label>
-		<input type="text" name="product_name" maxlength="255" tabindex="1">
+		<input type="text" name="product_name" id="product_name" maxlength="255" tabindex="1">
 	</div>
   <div class="inputField">
 		<label for="product_country_id">Country of Origin: </label>
-		<select name="product_country_id" tabindex="2">
+		<select name="product_country_id" id="product_country_id" tabindex="2">
 	    <?php require("countries.php");
 						$countries = AllCountries();
 						foreach ($countries as $key => $value) {
@@ -90,11 +90,11 @@ $product_name = $product_country_id = $product_quantity = $product_UM_id = '';
 	</div>
   <div class="inputField">
 		<label for="product_quantity">Quantity: </label>
-		<input type="text" name="product_quantity" onInput="validNumberCheck(this)" tabindex="3">
+		<input type="text" name="product_quantity" id="product_quantity" onInput="validNumberCheck(this)" tabindex="3">
 	</div>
   <div class="inputField">
 		<label for="product_UM_id">Unit of measure: </label>
-		<select name="product_UM_id" tabindex="4">
+		<select name="product_UM_id" id="product_UM_id" tabindex="4">
       <?php require("unitsofmeasure.php");
 						$units_of_measure = AllUnitsOfMeasure();
 						foreach ($units_of_measure as $key => $value) {

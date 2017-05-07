@@ -44,8 +44,7 @@ try {
   $stmt->execute();
 
 	$entryFormat =
-	'<form method="post">
-	<tr>
+	'<tr>
 	 	<td>%s</td>
 		<td>%s</td>
 	  <td>%s</td>
@@ -54,17 +53,20 @@ try {
 	  <td>%s</td>
 	  <td>%s</td>
 		<td>
-	 	 	<input type="submit" formaction="updateproduct.php" value="Update">
-	    <input type="submit" formaction="deleteproduct.php" value="Delete">
-			<input type="submit" formaction="productlog.php" value="View Product Log">
+			<form method="post">
+		 	 	<input type="submit" formaction="updateproduct.php" value="Update">
+		    <input type="submit" formaction="deleteproduct.php" value="Delete">
+				<input type="submit" formaction="productlog.php" value="View Product Log">
+
+				<input type="hidden" name="product_id" value="%s">
+			 	<input type="hidden" name="product_name" value="%s">
+			 	<input type="hidden" name="product_country" value="%s">
+			 	<input type="hidden" name="product_quantity" value="%s">
+			 	<input type="hidden" name="product_UM" value="%s">
+		 	</form>
 		</td>
 	 </tr>
-	 <input type="hidden" name="product_id" value="%s">
-	 <input type="hidden" name="product_name" value="%s">
-	 <input type="hidden" name="product_country" value="%s">
-	 <input type="hidden" name="product_quantity" value="%s">
-	 <input type="hidden" name="product_UM" value="%s">
-	 </form>
+
 	 ';
 	foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $result) {
 		echo sprintf($entryFormat, $result['ID'], $result['Name'],

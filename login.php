@@ -10,6 +10,7 @@ if (isset($_SESSION['user']) && $_SESSION['user'] != '')
 <!doctype html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Log In to Warehouse</title>
 </head>
 <body>

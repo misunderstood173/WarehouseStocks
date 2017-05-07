@@ -35,11 +35,11 @@ $product_UM = $_POST['product_UM'];
   <input type="hidden" name="old_product_UM" value="<?php echo $product_UM; ?>">
  	<div class="inputField">
  		<label for="product_name">Product name: </label>
- 		<input type="text" name="product_name" maxlength="255" tabindex="1" value="<?php echo $product_name; ?>">
+ 		<input type="text" name="product_name" id="product_name" maxlength="255" tabindex="1" value="<?php echo $product_name; ?>">
  	</div>
    <div class="inputField">
  		<label for="product_country">Country of Origin: </label>
- 		<select name="product_country" tabindex="2">
+ 		<select name="product_country" id="product_country" tabindex="2">
 	     <?php require("countries.php");
 				 $countries = AllCountries();
 				 foreach ($countries as $value) {
@@ -55,11 +55,11 @@ $product_UM = $_POST['product_UM'];
  	</div>
    <div class="inputField">
  		<label for="product_quantity">Quantity: </label>
- 		<input type="text" name="product_quantity" onInput="validNumberCheck(this)" tabindex="3" value="<?php echo $product_quantity; ?>">
+ 		<input type="text" name="product_quantity" onInput="validNumberCheck(this)" id="product_quantity" tabindex="3" value="<?php echo $product_quantity; ?>">
  	</div>
    <div class="inputField">
  		<label for="product_UM">Unit of measure: </label>
- 		<select name="product_UM" tabindex="4">
+ 		<select name="product_UM" id="product_UM" tabindex="4">
        <?php require("unitsofmeasure.php");
 				 $units_of_measure = AllUnitsOfMeasure();
 				 foreach ($units_of_measure as $value) {

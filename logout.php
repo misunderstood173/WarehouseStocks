@@ -1,4 +1,6 @@
+<!DOCTYPE html>
 <title>Warehouse</title>
+<meta charset="utf-8">
 <?php
     session_start();
     if (isset($_SESSION['user']) && isset($_SESSION["ID"])) {

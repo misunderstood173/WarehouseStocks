@@ -34,10 +34,6 @@ echo buildDefaultMenu();
 	</form>
 </div>
 
-<form id="products" method="post" action="#">
-
-</form>
-
 <div class="products">
 	<form id="products" method="post" action="#">
 	</form>

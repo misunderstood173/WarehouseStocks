@@ -49,20 +49,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </tr>";
 
     $entryFormat =
-    '<form method="post">
-    <tr>
+    '<tr>
       <td>%s</td>
       <td>%s</td>
       <td>%s</td>
       <td>%s</td>
       <td>%s</td>
      </tr>
-     <input type="hidden" name="employee_ID" value="%s">
-     <input type="hidden" name="action_type_ID" value="%s">
-     <input type="hidden" name="description" value="%s">
-     <input type="hidden" name="log_time" value="%s">
-     <input type="hidden" name="ip_address" value="%s">
-     </form>
      ';
     foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $result) {
       echo sprintf($entryFormat, $result['Employee'], $result['type'],

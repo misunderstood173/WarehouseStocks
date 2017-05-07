@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Warehouse Products</title>
 	<link rel="stylesheet" href="/warehousestocks/css/table.css">
 </head>
@@ -31,14 +32,12 @@ try {
   $stmt->execute();
 
 	$entryFormat =
-	'<form method="post">
-	<tr>
+	'<tr>
 		<td>%s</td>
 	  <td>%s</td>
 	  <td>%s</td>
 	  <td>%s</td>
 	 </tr>
-	 </form>
 	 ';
 	foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $result) {
 		echo sprintf($entryFormat, $result['Name'], $result['country_name'],
