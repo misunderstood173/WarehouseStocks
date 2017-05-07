@@ -3,6 +3,9 @@
 function updateProduct($conn, $product_id, $product_name, $product_country_id, $product_quantity, $product_UM_id)
 {
   try {
+    if (checkIfProductExists($conn, $product_name, $product_country_id, $product_UM_id)) {
+      throw new Exception('Product already exists');
+    }
     $employee_ID = $_SESSION['ID'];
 
     $sql = $conn->prepare(
@@ -16,7 +19,7 @@ function updateProduct($conn, $product_id, $product_name, $product_country_id, $
     $sql->bindParam(':employee_ID', $employee_ID);
     $sql->bindParam(':product_id', $product_id);
     $sql->execute();
-  } catch (Exception $e) {
+  } catch (PDOException $e) {
 		throw new PDOException("Can't update product " . $e->getMessage());
 	}
 }
@@ -37,7 +40,7 @@ function addProduct($conn, $product_name, $product_country_id, $product_quantity
 		$sql->bindParam(':UM', $product_UM_id);
 		$sql->bindParam(':employee_ID', $employee_ID);
 		$sql->execute();
-	} catch (Exception $e) {
+	} catch (PDOException $e) {
 		throw new PDOException("Can't add product " . $e->getMessage());
 	}
 }
