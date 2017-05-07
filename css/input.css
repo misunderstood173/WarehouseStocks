@@ -1,1 +1,23 @@
+.inputField {
+  padding: 1px;
+}
 
+.inputField label {
+  width: 120px;
+  text-align: right;
+  display: inline-block;
+}
+
+.login .inputField label {
+  width: 80px;
+  text-align: right;
+  display: inline-block;
+}
+
+.login input[type="submit"] {
+  margin-left: 206px;
+}
+
+div.product {
+  padding: 3px;
+}

@@ -7,6 +7,7 @@ require 'adminconnectedcheck.php';
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="/warehousestocks/css/input.css">
 	<title>Add new user</title>
 </head>
 <body>

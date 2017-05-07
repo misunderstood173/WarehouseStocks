@@ -11,6 +11,7 @@ if (isset($_SESSION['user']) && $_SESSION['user'] != '')
 <html>
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="/warehousestocks/css/input.css">
 	<title>Log In to Warehouse</title>
 </head>
 <body>
@@ -70,7 +71,7 @@ if (isset($_SESSION['user']) && $_SESSION['user'] != '')
 
  ?>
 
-<form method="post" action="#">
+<form class="login" method="post" action="#">
 	<div class="inputField">
 		<label for="username">Username: </label>
 		<input type="text" id="username" name="username" maxlength="32" tabindex="1" value="<?php echo $username; ?>">

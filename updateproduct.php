@@ -6,6 +6,7 @@ require('userconnectedcheck.php');
 <html>
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="/warehousestocks/css/input.css">
 	<title>Update product</title>
 	<script type="text/javascript"  src="js/inputCheck.js"></script>
 </head>

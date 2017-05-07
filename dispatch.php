@@ -6,6 +6,7 @@ require('userconnectedcheck.php');
 <html>
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="/warehousestocks/css/input.css">
 	<title>Dispatch</title>
 </head>
 <body>
@@ -69,7 +70,7 @@ function addProduct() {
 
   for (var i = 0; i < current_id + 1; i++) {
     formElements +=
-    '<div class="productFields"> \
+    '<div class="product"> \
       <div class="inputField"> \
     		<label for="product[]">Product name: </label> \
         <select id="product' + i + '" name="product[]" onfocus="this.oldValue = this.value; \

@@ -8,6 +8,7 @@ require('userconnectedcheck.php');
 	<meta charset="utf-8">
 	<title>Receive</title>
 	<script type="text/javascript"  src="js/inputCheck.js"></script>
+	<link rel="stylesheet" href="/warehousestocks/css/input.css">
 </head>
 <body>
 <?php

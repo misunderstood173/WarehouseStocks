@@ -1,7 +1,7 @@
 <?php
 function buildMenu($linkCaptionDictionary)
 {
-  echo '<h2>Warehouse</h2>';
+  echo '<h2 class="title">Warehouse</h2>';
   echo '<link rel="stylesheet" href="/warehousestocks/css/menu.css">';
 
   $menu ='<nav><ul class="menu">';
