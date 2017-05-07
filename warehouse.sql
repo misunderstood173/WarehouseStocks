@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.6.6
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 07, 2017 at 09:25 AM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Host: localhost
+-- Generation Time: May 07, 2017 at 06:15 PM
+-- Server version: 10.1.20-MariaDB
+-- PHP Version: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `warehouse`
+-- Database: `id1016243_warehouse`
 --
 
 -- --------------------------------------------------------
@@ -528,21 +528,24 @@ INSERT INTO `employee_log` (`ID`, `employee_ID`, `action_type_ID`, `product_modi
 (182, 3, 3, 31, 'Product {Suc de mere, Romania, 10, liters} modified to {Suc de mere, Romania, 10, liters}', '94.52.74.101', '2017-05-06 17:02:07'),
 (183, 1, 1, NULL, 'John Doe[johndoe] has logged in', '94.52.74.101', '2017-05-06 20:39:50'),
 (184, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '94.52.74.101', '2017-05-06 20:40:06'),
-(185, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '127.0.0.1', '2017-05-07 06:22:37'),
-(186, 3, 7, 31, 'Product quantity modified from 10 to 9', '127.0.0.1', '2017-05-07 06:50:21'),
-(187, 3, 2, NULL, 'Product added', '127.0.0.1', '2017-05-07 07:12:01'),
-(188, 3, 3, NULL, 'Product {asfghgfh<>, American Samoa, 3, boxes} modified to {asfghgs, American Samoa, 3, boxes}', '127.0.0.1', '2017-05-07 07:12:16'),
-(190, 3, 2, 33, 'Product added', '127.0.0.1', '2017-05-07 07:17:44'),
-(191, 3, 3, 33, 'Product {asfdsfgs, American Samoa, 3, boxes} modified to {a, American Samoa, 3, boxes}', '127.0.0.1', '2017-05-07 07:17:51'),
-(192, 3, 4, 33, 'Product {a, American Samoa, 3, boxes} deleted', '127.0.0.1', '2017-05-07 07:17:56'),
-(193, 3, 2, 34, 'Product added', '127.0.0.1', '2017-05-07 07:25:11'),
-(194, 3, 3, 34, 'Product {erw, Afghanistan, 2, boxes} modified to {erw1, Afghanistan, 2, boxes}', '127.0.0.1', '2017-05-07 07:25:20'),
-(195, 3, 4, 34, 'Product {erw1, Afghanistan, 2, boxes} deleted', '127.0.0.1', '2017-05-07 07:25:27'),
-(196, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '127.0.0.1', '2017-05-07 07:50:58'),
-(197, 3, 7, 1, 'Product quantity modified from 165.5 to 165.25', '127.0.0.1', '2017-05-07 07:52:33'),
-(198, 1, 1, NULL, 'John Doe[johndoe] has logged in', '127.0.0.1', '2017-05-07 09:13:08'),
-(199, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '127.0.0.1', '2017-05-07 09:17:28'),
-(200, 2, 1, NULL, 'Jane Roe[janeroe] has logged in', '127.0.0.1', '2017-05-07 09:20:06');
+(185, 3, 2, 32, 'Product added', '94.52.74.101', '2017-05-06 21:12:29'),
+(186, 3, 3, 32, 'Product {Elastic, China, 20, boxes} modified to {Elastic, China, 25, boxes}', '94.52.74.101', '2017-05-06 21:12:49'),
+(187, 3, 7, 31, 'Product quantity modified from 10 to 9', '94.52.74.101', '2017-05-06 21:13:12'),
+(188, 3, 7, 32, 'Product quantity modified from 25 to 23', '94.52.74.101', '2017-05-06 21:13:12'),
+(189, 3, 8, 31, 'Product quantity modified from 9 to 10', '94.52.74.101', '2017-05-06 21:14:28'),
+(190, 3, 8, 32, 'Product quantity modified from 23 to 25', '94.52.74.101', '2017-05-06 21:14:28'),
+(191, 3, 2, 33, 'Product added', '94.52.74.101', '2017-05-06 21:17:59'),
+(192, 1, 1, NULL, 'John Doe[johndoe] has logged in', '94.52.74.101', '2017-05-07 06:15:07'),
+(193, 1, 1, NULL, 'John Doe[johndoe] has logged in', '46.214.237.242', '2017-05-07 09:26:41'),
+(194, 2, 1, NULL, 'Jane Roe[janeroe] has logged in', '46.214.237.242', '2017-05-07 09:26:50'),
+(195, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '46.214.237.242', '2017-05-07 09:26:57'),
+(196, 5, 1, NULL, 'Olivian[olivian] has logged in', '46.214.237.242', '2017-05-07 09:27:17'),
+(197, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '46.214.237.242', '2017-05-07 09:27:25'),
+(198, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '94.52.74.128', '2017-05-07 18:12:33'),
+(199, 3, 8, 34, 'Product added', '94.52.74.128', '2017-05-07 18:13:07'),
+(200, 3, 8, 35, 'Product added', '94.52.74.128', '2017-05-07 18:13:07'),
+(201, 3, 4, 34, 'Product {Suc TEST, Romania, 12, } deleted', '94.52.74.128', '2017-05-07 18:13:22'),
+(202, 3, 4, 35, 'Product {BETA, Romania, 11, grams} deleted', '94.52.74.128', '2017-05-07 18:13:36');
 
 -- --------------------------------------------------------
 
@@ -565,7 +568,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`ID`, `Name`, `Country_ID`, `Quantity`, `Unit_of_measure_ID`, `Last_modified_by_employee_ID`, `Last_time_modified`) VALUES
-(1, 'Portocale', 181, 165.25, 1, 3, '2017-05-07 07:52:33'),
+(1, 'Portocale', 181, 165.5, 1, 1, '2017-05-02 16:04:39'),
 (2, 'Banane', 106, 112, 1, 1, '2017-05-02 09:14:12'),
 (9, 'Mere', 181, 85.05, 1, 1, '2017-05-02 16:05:45'),
 (10, 'Rosii', 222, 105, 1, 3, '2017-05-06 16:55:56'),
@@ -578,7 +581,9 @@ INSERT INTO `products` (`ID`, `Name`, `Country_ID`, `Quantity`, `Unit_of_measure
 (19, 'Mouse', 44, 21, 2, 2, '2017-05-01 17:17:42'),
 (28, 'praf', 1, 1.151, 1, 1, '2017-05-01 17:11:15'),
 (29, 'covor', 181, 10, 2, 2, '2017-04-30 17:28:52'),
-(31, 'Suc de mere', 181, 9, 3, 3, '2017-05-07 06:50:21');
+(31, 'Suc de mere', 181, 10, 3, 3, '2017-05-06 21:14:28'),
+(32, 'Elastic', 44, 25, 5, 3, '2017-05-06 21:16:07'),
+(33, 'Apa plata', 181, 60, 2, 3, '2017-05-06 21:17:59');
 
 -- --------------------------------------------------------
 
@@ -677,12 +682,12 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `employee_log`
 --
 ALTER TABLE `employee_log`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `units_of_measure`
 --
@@ -703,9 +708,7 @@ ALTER TABLE `employee_log`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_country_contraint` FOREIGN KEY (`Country_ID`) REFERENCES `countries` (`ID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `products_employees_constraint` FOREIGN KEY (`Last_modified_by_employee_ID`) REFERENCES `employees` (`ID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `products_unitsofmeasures_constraint` FOREIGN KEY (`Unit_of_measure_ID`) REFERENCES `units_of_measure` (`ID`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `products_employees_constraint` FOREIGN KEY (`Last_modified_by_employee_ID`) REFERENCES `employees` (`ID`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
