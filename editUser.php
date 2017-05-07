@@ -46,7 +46,7 @@ try {
 	</div>
   <div class="inputField">
 		<label for="password">Password: </label>
-		<input type="text" name="password" id="password" tabindex="3" value="<?php echo $user['password']; ?>">
+		<input type="text" name="password" id="password" tabindex="3" value="">
 	</div>
 	<input type="submit" name="btnEditUser" value="Edit" tabindex="4">
 </form>

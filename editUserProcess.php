@@ -20,7 +20,8 @@ if (isset($_POST['user_id']) && isset($_POST['full_name']) && isset($_POST['user
         );
       $sql->bindParam(':user_full_name', $user_full_name);
       $sql->bindParam(':username', $username);
-      $sql->bindParam(':password', $password);
+      $password_hash = password_hash($password, PASSWORD_DEFAULT);
+      $sql->bindParam(':password', $password_hash);
       $sql->bindParam(':user_id', $user_id);
       $sql->execute();
 

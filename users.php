@@ -23,7 +23,6 @@ echo "<tr>
       <th>ID</th>
       <th>Full name</th>
       <th>Username</th>
-      <th>Password</th>
       <th>Account type</th>
       <th>Account status</th>
 			<th>Action</th>
@@ -47,7 +46,6 @@ try {
   	  <td>%s</td>
   	  <td>%s</td>
   	  <td>%s</td>
-      <td>%s</td>
   		<td>
   	 	 	<input type="submit" formaction="toggleEnableUser.php" value="Enable/Disable">
         <input type="submit" formaction="editUser.php" value="Edit">
@@ -60,7 +58,7 @@ try {
   	 ';
   foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $result) {
       echo sprintf($entryFormat, $result['ID'], $result['Full_name'], $result['username'],
-                  $result['password'], $result['account_type'], $result['Account status'],
+                  $result['account_type'], $result['Account status'],
                   $result['ID'], $result['Full_name']);
   }
 

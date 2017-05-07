@@ -35,7 +35,8 @@ $full_name = $username = $password = '';
             );
           $sql->bindParam(':full_name', $full_name);
           $sql->bindParam(':user', $username);
-          $sql->bindParam(':pass', $password);
+          $password_hash = password_hash($password, PASSWORD_DEFAULT);
+          $sql->bindParam(':pass', $password_hash);
           $sql->execute();
 
 					//log action

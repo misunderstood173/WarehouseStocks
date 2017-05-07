@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6
+-- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 06, 2017 at 09:02 PM
--- Server version: 10.1.20-MariaDB
--- PHP Version: 7.0.8
+-- Host: 127.0.0.1
+-- Generation Time: May 07, 2017 at 09:25 AM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `id1016243_warehouse`
+-- Database: `warehouse`
 --
 
 -- --------------------------------------------------------
@@ -26,11 +26,10 @@ SET time_zone = "+00:00";
 -- Table structure for table `action_type`
 --
 
-CREATE TABLE IF NOT EXISTS `action_type` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+CREATE TABLE `action_type` (
+  `ID` int(11) NOT NULL,
+  `type` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `action_type`
@@ -51,14 +50,11 @@ INSERT INTO `action_type` (`ID`, `type`) VALUES
 -- Table structure for table `countries`
 --
 
-CREATE TABLE IF NOT EXISTS `countries` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `countries` (
+  `ID` int(11) NOT NULL,
   `country_code` varchar(2) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `country_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `country_name` (`country_name`),
-  UNIQUE KEY `country_code` (`country_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=246 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+  `country_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `countries`
@@ -317,27 +313,25 @@ INSERT INTO `countries` (`ID`, `country_code`, `country_name`) VALUES
 -- Table structure for table `employees`
 --
 
-CREATE TABLE IF NOT EXISTS `employees` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `employees` (
+  `ID` int(11) NOT NULL,
   `Full_name` varchar(120) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `username` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `password` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `password` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `account_type` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT 'user',
-  `enabled` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+  `enabled` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `employees`
 --
 
 INSERT INTO `employees` (`ID`, `Full_name`, `username`, `password`, `account_type`, `enabled`) VALUES
-(1, 'John Doe', 'johndoe', 'johndoepass', 'user', 1),
-(2, 'Jane Roe', 'janeroe', 'janeroepass', 'user', 1),
-(3, 'Warehouse Keeper', 'admin', 'adminpass', 'admin', 1),
-(4, 'Test User', 'test', 'testpass', 'user', 0),
-(5, 'Olivian', 'olivian', 'olivian', 'user', 1);
+(1, 'John Doe', 'johndoe', '$2y$10$5OSgPrbsFhpuOTOUkj8O5ulAtlofe.t6Sk3XLLTyCMUNti0Aq1ziO', 'user', 1),
+(2, 'Jane Roe', 'janeroe', '$2y$10$Xx/bKzY7jnvGjTd/YiiAG.do1gXfpgJ7H3fmE9Qz3reT3i5816z8u', 'user', 1),
+(3, 'Warehouse Keeper', 'admin', '$2y$10$Ny6fTOYNAn3X5DWid/rqcOapAyZVMkTU8HWlnSmWWVlw8DMCZhgHq', 'admin', 1),
+(4, 'Test User', 'test', '$2y$10$rlMWGTj5cNI76RvU4kWFxu0kHgoxnaOfBjbGqYFUOkmF9ECzqwpKy', 'user', 0),
+(5, 'Olivian', 'olivian', '$2y$10$zQXIZdkp0DQIYU8yPpMz9uywjQe6f7BWx/wah0SACgrygrNsMwQoC', 'user', 1);
 
 -- --------------------------------------------------------
 
@@ -345,19 +339,15 @@ INSERT INTO `employees` (`ID`, `Full_name`, `username`, `password`, `account_typ
 -- Table structure for table `employee_log`
 --
 
-CREATE TABLE IF NOT EXISTS `employee_log` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `employee_log` (
+  `ID` int(11) NOT NULL,
   `employee_ID` int(11) DEFAULT NULL,
   `action_type_ID` int(11) NOT NULL,
   `product_modified_ID` int(11) DEFAULT NULL,
   `description` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `ip_address` varchar(16) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `log_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`ID`),
-  KEY `employee_log_actions_constraint` (`action_type_ID`),
-  KEY `employee_log_employees_constraint` (`employee_ID`),
-  KEY `product_modified_ID` (`product_modified_ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=185 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+  `log_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `employee_log`
@@ -537,7 +527,22 @@ INSERT INTO `employee_log` (`ID`, `employee_ID`, `action_type_ID`, `product_modi
 (181, 3, 8, 31, 'Product added', '94.52.74.101', '2017-05-06 16:55:56'),
 (182, 3, 3, 31, 'Product {Suc de mere, Romania, 10, liters} modified to {Suc de mere, Romania, 10, liters}', '94.52.74.101', '2017-05-06 17:02:07'),
 (183, 1, 1, NULL, 'John Doe[johndoe] has logged in', '94.52.74.101', '2017-05-06 20:39:50'),
-(184, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '94.52.74.101', '2017-05-06 20:40:06');
+(184, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '94.52.74.101', '2017-05-06 20:40:06'),
+(185, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '127.0.0.1', '2017-05-07 06:22:37'),
+(186, 3, 7, 31, 'Product quantity modified from 10 to 9', '127.0.0.1', '2017-05-07 06:50:21'),
+(187, 3, 2, NULL, 'Product added', '127.0.0.1', '2017-05-07 07:12:01'),
+(188, 3, 3, NULL, 'Product {asfghgfh<>, American Samoa, 3, boxes} modified to {asfghgs, American Samoa, 3, boxes}', '127.0.0.1', '2017-05-07 07:12:16'),
+(190, 3, 2, 33, 'Product added', '127.0.0.1', '2017-05-07 07:17:44'),
+(191, 3, 3, 33, 'Product {asfdsfgs, American Samoa, 3, boxes} modified to {a, American Samoa, 3, boxes}', '127.0.0.1', '2017-05-07 07:17:51'),
+(192, 3, 4, 33, 'Product {a, American Samoa, 3, boxes} deleted', '127.0.0.1', '2017-05-07 07:17:56'),
+(193, 3, 2, 34, 'Product added', '127.0.0.1', '2017-05-07 07:25:11'),
+(194, 3, 3, 34, 'Product {erw, Afghanistan, 2, boxes} modified to {erw1, Afghanistan, 2, boxes}', '127.0.0.1', '2017-05-07 07:25:20'),
+(195, 3, 4, 34, 'Product {erw1, Afghanistan, 2, boxes} deleted', '127.0.0.1', '2017-05-07 07:25:27'),
+(196, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '127.0.0.1', '2017-05-07 07:50:58'),
+(197, 3, 7, 1, 'Product quantity modified from 165.5 to 165.25', '127.0.0.1', '2017-05-07 07:52:33'),
+(198, 1, 1, NULL, 'John Doe[johndoe] has logged in', '127.0.0.1', '2017-05-07 09:13:08'),
+(199, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '127.0.0.1', '2017-05-07 09:17:28'),
+(200, 2, 1, NULL, 'Jane Roe[janeroe] has logged in', '127.0.0.1', '2017-05-07 09:20:06');
 
 -- --------------------------------------------------------
 
@@ -545,26 +550,22 @@ INSERT INTO `employee_log` (`ID`, `employee_ID`, `action_type_ID`, `product_modi
 -- Table structure for table `products`
 --
 
-CREATE TABLE IF NOT EXISTS `products` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `products` (
+  `ID` int(11) NOT NULL,
   `Name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `Country_ID` int(11) NOT NULL COMMENT 'Country of origin (COO) ID',
   `Quantity` double NOT NULL,
   `Unit_of_measure_ID` int(11) NOT NULL,
   `Last_modified_by_employee_ID` int(11) NOT NULL,
-  `Last_time_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`ID`),
-  KEY `products_country_contraint` (`Country_ID`),
-  KEY `products_employees_constraint` (`Last_modified_by_employee_ID`),
-  KEY `products_unitsofmeasures_constraint` (`Unit_of_measure_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+  `Last_time_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`ID`, `Name`, `Country_ID`, `Quantity`, `Unit_of_measure_ID`, `Last_modified_by_employee_ID`, `Last_time_modified`) VALUES
-(1, 'Portocale', 181, 165.5, 1, 1, '2017-05-02 16:04:39'),
+(1, 'Portocale', 181, 165.25, 1, 3, '2017-05-07 07:52:33'),
 (2, 'Banane', 106, 112, 1, 1, '2017-05-02 09:14:12'),
 (9, 'Mere', 181, 85.05, 1, 1, '2017-05-02 16:05:45'),
 (10, 'Rosii', 222, 105, 1, 3, '2017-05-06 16:55:56'),
@@ -577,7 +578,7 @@ INSERT INTO `products` (`ID`, `Name`, `Country_ID`, `Quantity`, `Unit_of_measure
 (19, 'Mouse', 44, 21, 2, 2, '2017-05-01 17:17:42'),
 (28, 'praf', 1, 1.151, 1, 1, '2017-05-01 17:11:15'),
 (29, 'covor', 181, 10, 2, 2, '2017-04-30 17:28:52'),
-(31, 'Suc de mere', 181, 10, 3, 3, '2017-05-06 17:33:40');
+(31, 'Suc de mere', 181, 9, 3, 3, '2017-05-07 06:50:21');
 
 -- --------------------------------------------------------
 
@@ -585,14 +586,11 @@ INSERT INTO `products` (`ID`, `Name`, `Country_ID`, `Quantity`, `Unit_of_measure
 -- Table structure for table `units_of_measure`
 --
 
-CREATE TABLE IF NOT EXISTS `units_of_measure` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `units_of_measure` (
+  `ID` int(11) NOT NULL,
   `unit_name` varchar(120) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `Abbreviation` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `Abbreviation` (`Abbreviation`),
-  UNIQUE KEY `Name` (`unit_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+  `Abbreviation` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `units_of_measure`
@@ -606,6 +604,91 @@ INSERT INTO `units_of_measure` (`ID`, `unit_name`, `Abbreviation`) VALUES
 (5, 'boxes', 'box');
 
 --
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `action_type`
+--
+ALTER TABLE `action_type`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `countries`
+--
+ALTER TABLE `countries`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `country_name` (`country_name`),
+  ADD UNIQUE KEY `country_code` (`country_code`);
+
+--
+-- Indexes for table `employees`
+--
+ALTER TABLE `employees`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `employee_log`
+--
+ALTER TABLE `employee_log`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `employee_log_actions_constraint` (`action_type_ID`),
+  ADD KEY `employee_log_employees_constraint` (`employee_ID`),
+  ADD KEY `product_modified_ID` (`product_modified_ID`) USING BTREE;
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `products_country_contraint` (`Country_ID`),
+  ADD KEY `products_employees_constraint` (`Last_modified_by_employee_ID`),
+  ADD KEY `products_unitsofmeasures_constraint` (`Unit_of_measure_ID`);
+
+--
+-- Indexes for table `units_of_measure`
+--
+ALTER TABLE `units_of_measure`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Abbreviation` (`Abbreviation`),
+  ADD UNIQUE KEY `Name` (`unit_name`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `action_type`
+--
+ALTER TABLE `action_type`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `countries`
+--
+ALTER TABLE `countries`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
+--
+-- AUTO_INCREMENT for table `employees`
+--
+ALTER TABLE `employees`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `employee_log`
+--
+ALTER TABLE `employee_log`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+--
+-- AUTO_INCREMENT for table `units_of_measure`
+--
+ALTER TABLE `units_of_measure`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- Constraints for dumped tables
 --
 
@@ -614,8 +697,7 @@ INSERT INTO `units_of_measure` (`ID`, `unit_name`, `Abbreviation`) VALUES
 --
 ALTER TABLE `employee_log`
   ADD CONSTRAINT `employee_log_actions_constraint` FOREIGN KEY (`action_type_ID`) REFERENCES `action_type` (`ID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `employee_log_employees_constraint` FOREIGN KEY (`employee_ID`) REFERENCES `employees` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  ADD CONSTRAINT `employee_log_ibfk_1` FOREIGN KEY (`product_modified_ID`) REFERENCES `products` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `employee_log_employees_constraint` FOREIGN KEY (`employee_ID`) REFERENCES `employees` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `products`

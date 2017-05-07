@@ -25,10 +25,10 @@ if (isset($_SESSION['user']) && $_SESSION['user'] != '')
 		try {
 			require "connection.php";
 
-			$stmt = $conn->prepare("SELECT employees.ID, employees.Full_name, employees.account_type, employees.enabled FROM employees
-															WHERE employees.username=:username AND employees.password=:password");
+			$stmt = $conn->prepare("SELECT employees.ID, employees.Full_name, employees.account_type, employees.enabled, employees.password
+															FROM employees
+															WHERE employees.username=:username");
 			$stmt->bindParam(':username', $username);
-			$stmt->bindParam(':password', $password);
 			$stmt->execute();
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
 			if (!$row) {
@@ -36,6 +36,9 @@ if (isset($_SESSION['user']) && $_SESSION['user'] != '')
 			}
 			elseif ($row['enabled'] == 0) {
 				echo "Account disabled";
+			}
+			elseif (!password_verify($password, $row['password'])) {
+				echo 'Incorrect password';
 			}
 			else {
 				//log action
