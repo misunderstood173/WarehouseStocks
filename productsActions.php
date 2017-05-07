@@ -3,7 +3,8 @@
 function updateProduct($conn, $product_id, $product_name, $product_country_id, $product_quantity, $product_UM_id)
 {
   try {
-    if (checkIfProductExists($conn, $product_name, $product_country_id, $product_UM_id)) {
+    $product = checkIfProductExists($conn, $product_name, $product_country_id, $product_UM_id);
+    if ($product && $product['ID'] != $product_id) {
       throw new Exception('Product already exists');
     }
     $employee_ID = $_SESSION['ID'];
