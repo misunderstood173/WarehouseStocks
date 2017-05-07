@@ -30,7 +30,7 @@ if (isset($_POST['user_id']) && isset($_POST['full_name']) && isset($_POST['user
       echo 'All fields required!';
     }
 
-    echo  '<p><a href="users.php">Go back</a></p>';
+    echo  '<p><a href="/warehousestocks/users.php">Go back</a></p>';
 
     } catch (PDOException  $e) {
       die("Connection failed: " . $e->getMessage());

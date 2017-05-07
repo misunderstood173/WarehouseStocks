@@ -7,7 +7,7 @@ require 'adminconnectedcheck.php';
 <html>
 <head>
   <meta charset="utf-8">
-	<link rel="stylesheet" href="css/table.css">
+	<link rel="stylesheet" href="/warehousestocks/css/table.css">
 	<title>All users</title>
 </head>
 <body>
@@ -72,7 +72,7 @@ echo '</table>';
 
 ?>
 
-<a href="adduser.php">Add new user</a>
+<a href="/warehousestocks/adduser.php">Add new user</a>
 
 </body>
 </html>

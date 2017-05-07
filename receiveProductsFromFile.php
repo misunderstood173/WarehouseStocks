@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Receive Products From File</title>
-    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="/warehousestocks/css/table.css">
   </head>
   <body>
 
@@ -15,7 +15,7 @@ if (isset($_POST['JSON'])) {
   require 'warehouseActions.php';
   receiveProducts($products);
   echo "Products received";
-  die('<p><a href="receive.php">Go back</a></p>');
+  die('<p><a href="/warehousestocks/receive.php">Go back</a></p>');
 }
 
 if (!isset($_FILES["JSONfile"])) {

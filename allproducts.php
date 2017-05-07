@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Warehouse Products</title>
-	<link rel="stylesheet" href="css/table.css">
+	<link rel="stylesheet" href="/warehousestocks/css/table.css">
 </head>
 <body>
   <h3>All products in warehouse</h3>
@@ -51,6 +51,6 @@ try {
   echo "Connection failed: " . $e->getMessage();
 }
 ?>
-	<p><a href="index.html">Go back</a></p>
+	<p><a href="/warehousestocks/index.html">Go back</a></p>
 </body>
 </html>

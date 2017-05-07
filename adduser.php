@@ -51,7 +51,7 @@ $full_name = $username = $password = '';
 					$stmt->bindParam(':ip', $ip);
 					$stmt->execute();
 
-          die('User added successfully !' . '<br>' . '<p><a href="users.php">Go back</a></p>');
+          die('User added successfully !' . '<br>' . '<p><a href="/warehousestocks/users.php">Go back</a></p>');
         }
         else {
           echo 'All fields required!' . '<br>';

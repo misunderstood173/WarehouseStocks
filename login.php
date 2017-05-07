@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['user']) && $_SESSION['user'] != '')
 {
 	echo "<title>Warehouse</title>";
-	die('You are already logged in. Go to the <a href="warehouse.php">Warehouse</a>');
+	die('You are already logged in. Go to the <a href="/warehousestocks/warehouse.php">Warehouse</a>');
 }
 ?>
 
@@ -77,7 +77,7 @@ if (isset($_SESSION['user']) && $_SESSION['user'] != '')
 	</div>
 	<input type="submit" name="btnLogIn" value="Log In" tabindex="3">
 </form>
-	<p><a href="index.html">Go back</a></p>
+	<p><a href="/warehousestocks/index.html">Go back</a></p>
 
 </body>
 </html>

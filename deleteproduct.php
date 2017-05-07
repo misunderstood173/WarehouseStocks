@@ -32,6 +32,6 @@ $productInfo = $product_name . ', ' . $product_country . ', '
   <p>Are you sure you want to delete this product {<?php echo $productInfo ?>} ?</p>
   <input type="submit" name="btnYes" value="Yes">
 </form>
-  <p><a href="products.php">Go Back</a></p>
+  <p><a href="/warehousestocks/products.php">Go Back</a></p>
 </body>
 </html>

@@ -13,5 +13,5 @@
       echo 'You are not logged in!';
     }
     echo '<br>';
-    echo '<a href=index.html>Go to homepage</a>';
+    echo '<a href=/warehousestocks/index.html>Go to homepage</a>';
  ?>

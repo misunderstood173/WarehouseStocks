@@ -14,12 +14,12 @@ function buildMenu($linkCaptionDictionary)
 function buildDefaultMenu()
 {
   $menuArray = array(
-          'dispatch.php' => 'Dispatch',
-          'receive.php' => 'Receive',
-          'addproduct.php' => 'Add Product',
-          'products.php' => 'All Products',
-          'warehouse.php' => 'Go to Warehouse',
-          'logout.php' => 'Log Out');
+          '/warehousestocks/dispatch.php' => 'Dispatch',
+          '/warehousestocks/receive.php' => 'Receive',
+          '/warehousestocks/addproduct.php' => 'Add Product',
+          '/warehousestocks/products.php' => 'All Products',
+          '/warehousestocks/warehouse.php' => 'Go to Warehouse',
+          '/warehousestocks/logout.php' => 'Log Out');
   return buildMenu($menuArray);
 }
  ?>

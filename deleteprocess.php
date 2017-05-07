@@ -43,7 +43,7 @@ try {
   $stmt->bindParam(':description', $desc);
   $stmt->bindParam(':ip', $ip);
   $stmt->execute();
-  echo '<p><a href="products.php">Go Back</a></p>';
+  echo '<p><a href="/warehousestocks/products.php">Go Back</a></p>';
 
 } catch (PDOException  $e) {
   echo "Connection failed: " . $e->getMessage();

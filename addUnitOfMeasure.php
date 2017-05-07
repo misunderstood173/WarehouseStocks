@@ -8,7 +8,7 @@ require 'adminconnectedcheck.php';
 <head>
 	<meta charset="utf-8">
 	<title>Add Unit of Measure</title>
-	<link rel="stylesheet" href="css/input.css">
+	<link rel="stylesheet" href="/warehousestocks/css/input.css">
 </head>
 <body>
 <?php
@@ -44,7 +44,7 @@ require 'adminconnectedcheck.php';
 				else
 					echo 'This Unit of Measure already exists !';
 
-        die('<p><a href="um.php">Go back</a></p>');
+        die('<p><a href="/warehousestocks/um.php">Go back</a></p>');
 
       }
       else {

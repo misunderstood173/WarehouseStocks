@@ -4,7 +4,7 @@ require('userconnectedcheck.php');
 require 'inputTest.php';
 
 if($_SERVER["REQUEST_METHOD"] != "POST")
-  die('You shouldn\'t be here.<br><p><a href="warehouse.php">Go to Warehouse</a></p>');
+  die('You shouldn\'t be here.<br><p><a href="/warehousestocks/warehouse.php">Go to Warehouse</a></p>');
 $product_id = inputTest($_POST['product_id']);
 //new attributes
 $product_name = inputTest($_POST['product_name']);

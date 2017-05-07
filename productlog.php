@@ -7,7 +7,7 @@ require('userconnectedcheck.php');
 <head>
 	<meta charset="utf-8">
 	<title>Product <?php if (isset($_POST['product_name'])) echo $_POST['product_name']; ?> Log</title>
-	<link rel="stylesheet" href="css/table.css">
+	<link rel="stylesheet" href="/warehousestocks/css/table.css">
 </head>
 <body>
 
@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     echo '</table>';
-    die('<p><a href="products.php">Go Back</a></p>');
+    die('<p><a href="/warehousestocks/products.php">Go Back</a></p>');
 
   } catch (PDOException  $e) {
     echo "Connection failed: " . $e->getMessage();
@@ -89,6 +89,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <p>Are you sure you want to delete this product {<?php echo $productInfo ?>} ?</p>
   <input type="submit" name="btnYes" value="Yes">
 </form>
-  <p><a href="products.php">Go Back</a></p>
+  <p><a href="/warehousestocks/products.php">Go Back</a></p>
 </body>
 </html>

@@ -28,7 +28,7 @@ if (isset($_POST['um_id']) && isset($_POST['um_name']) && isset($_POST['um_abbre
       echo 'All fields required!';
     }
 
-    echo  '<p><a href="um.php">Go back</a></p>';
+    echo  '<p><a href="/warehousestocks/um.php">Go back</a></p>';
 
     } catch (PDOException  $e) {
       die("Connection failed: " . $e->getMessage());

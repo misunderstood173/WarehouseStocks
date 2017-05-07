@@ -10,17 +10,17 @@ require('userconnectedcheck.php');
 
 require 'menu.php';
 $menuArray = array(
-				'dispatch.php' => 'Dispatch',
-				'receive.php' => 'Receive',
-				'addproduct.php' => 'Add Product',
-				'products.php' => 'All Products',
-				'userlog.php' => 'My log');
+				'/warehousestocks/dispatch.php' => 'Dispatch',
+				'/warehousestocks/receive.php' => 'Receive',
+				'/warehousestocks/addproduct.php' => 'Add Product',
+				'/warehousestocks/products.php' => 'All Products',
+				'/warehousestocks/userlog.php' => 'My log');
 
 if (isset($_SESSION['admin'])) {
-	$menuArray['users.php'] = 'Users';
-	$menuArray['um.php'] = 'Units of measure';
+	$menuArray['/warehousestocks/users.php'] = 'Users';
+	$menuArray['/warehousestocks/um.php'] = 'Units of measure';
 }
-$menuArray['logout.php'] = 'Log Out';
+$menuArray['/warehousestocks/logout.php'] = 'Log Out';
 echo buildMenu($menuArray);
 
 echo 'Welcome ' . $_SESSION["user"] .'!';
