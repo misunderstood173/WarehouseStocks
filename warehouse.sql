@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.6.6
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 02, 2017 at 07:16 AM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Host: localhost
+-- Generation Time: May 06, 2017 at 09:02 PM
+-- Server version: 10.1.20-MariaDB
+-- PHP Version: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `warehouse`
+-- Database: `id1016243_warehouse`
 --
 
 -- --------------------------------------------------------
@@ -26,10 +26,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `action_type`
 --
 
-CREATE TABLE `action_type` (
-  `ID` int(11) NOT NULL,
-  `type` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `action_type` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `action_type`
@@ -50,11 +51,14 @@ INSERT INTO `action_type` (`ID`, `type`) VALUES
 -- Table structure for table `countries`
 --
 
-CREATE TABLE `countries` (
-  `ID` int(11) NOT NULL,
-  `country_code` varchar(2) NOT NULL,
-  `country_name` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `countries` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `country_code` varchar(2) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `country_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `country_name` (`country_name`),
+  UNIQUE KEY `country_code` (`country_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=246 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `countries`
@@ -313,14 +317,16 @@ INSERT INTO `countries` (`ID`, `country_code`, `country_name`) VALUES
 -- Table structure for table `employees`
 --
 
-CREATE TABLE `employees` (
-  `ID` int(100) NOT NULL,
-  `Full_name` varchar(120) NOT NULL,
-  `username` varchar(32) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `account_type` varchar(20) NOT NULL DEFAULT 'user',
-  `enabled` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `employees` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Full_name` varchar(120) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `username` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `password` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `account_type` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT 'user',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `employees`
@@ -330,7 +336,8 @@ INSERT INTO `employees` (`ID`, `Full_name`, `username`, `password`, `account_typ
 (1, 'John Doe', 'johndoe', 'johndoepass', 'user', 1),
 (2, 'Jane Roe', 'janeroe', 'janeroepass', 'user', 1),
 (3, 'Warehouse Keeper', 'admin', 'adminpass', 'admin', 1),
-(4, 'Test User', 'test', 'testpass', 'user', 0);
+(4, 'Test User', 'test', 'testpass', 'user', 0),
+(5, 'Olivian', 'olivian', 'olivian', 'user', 1);
 
 -- --------------------------------------------------------
 
@@ -338,23 +345,27 @@ INSERT INTO `employees` (`ID`, `Full_name`, `username`, `password`, `account_typ
 -- Table structure for table `employee_log`
 --
 
-CREATE TABLE `employee_log` (
-  `ID` int(11) NOT NULL,
-  `employee_ID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `employee_log` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `employee_ID` int(11) DEFAULT NULL,
   `action_type_ID` int(11) NOT NULL,
   `product_modified_ID` int(11) DEFAULT NULL,
-  `description` text NOT NULL,
-  `ip_address` varchar(16) NOT NULL,
-  `log_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `description` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `ip_address` varchar(16) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `log_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`),
+  KEY `employee_log_actions_constraint` (`action_type_ID`),
+  KEY `employee_log_employees_constraint` (`employee_ID`),
+  KEY `product_modified_ID` (`product_modified_ID`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=185 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `employee_log`
 --
 
 INSERT INTO `employee_log` (`ID`, `employee_ID`, `action_type_ID`, `product_modified_ID`, `description`, `ip_address`, `log_time`) VALUES
-(3, 1, 2, 18, 'Product added', '127.0.0.1', '2017-04-26 14:48:31'),
 (2, 1, 1, NULL, 'John Doe[johndoe] has logged in', '127.0.0.1', '2017-04-26 14:31:13'),
+(3, 1, 2, 18, 'Product added', '127.0.0.1', '2017-04-26 14:48:31'),
 (4, 1, 1, NULL, 'John Doe[johndoe] has logged in', '127.0.0.1', '2017-04-26 16:16:15'),
 (5, 1, 1, NULL, 'John Doe[johndoe] has logged in', '127.0.0.1', '2017-04-26 16:16:43'),
 (6, 1, 1, NULL, 'John Doe[johndoe] has logged in', '127.0.0.1', '2017-04-26 16:16:52'),
@@ -368,8 +379,8 @@ INSERT INTO `employee_log` (`ID`, `employee_ID`, `action_type_ID`, `product_modi
 (14, 2, 2, 20, 'Product added', '127.0.0.1', '2017-04-26 17:26:01'),
 (15, 2, 4, 20, 'Product {test, Algeria, 2, kilograms} deleted', '127.0.0.1', '2017-04-26 17:52:37'),
 (16, 2, 2, 21, 'Product added', '127.0.0.1', '2017-04-26 17:53:39'),
-(19, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '127.0.0.1', '2017-04-27 16:33:42'),
 (18, 2, 4, 21, 'Product {test2, Korea, Democratic People\'s Republic of, 5, pieces} deleted', '127.0.0.1', '2017-04-26 18:02:13'),
+(19, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '127.0.0.1', '2017-04-27 16:33:42'),
 (20, 1, 1, NULL, 'John Doe[johndoe] has logged in', '127.0.0.1', '2017-04-27 16:41:14'),
 (21, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '127.0.0.1', '2017-04-27 16:41:28'),
 (22, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '127.0.0.1', '2017-04-27 16:42:03'),
@@ -383,13 +394,13 @@ INSERT INTO `employee_log` (`ID`, `employee_ID`, `action_type_ID`, `product_modi
 (30, 4, 4, 22, 'Product {test, American Samoa, 1, pieces} deleted', '127.0.0.1', '2017-04-27 17:31:46'),
 (31, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '127.0.0.1', '2017-04-27 17:32:12'),
 (32, 2, 1, NULL, 'Jane Roe[janeroe] has logged in', '127.0.0.1', '2017-04-29 12:20:50'),
-(40, 1, 2, 23, 'Product added', '127.0.0.1', '2017-04-30 08:40:44'),
-(41, 1, 3, 1, 'Product {Portocale, Romania, 148, kilograms} modified to {Portocale, Romania, 150, kilograms}', '127.0.0.1', '2017-04-30 08:55:11'),
+(35, 2, 7, 15, 'Product quantity modified from 600 to 550', '127.0.0.1', '2017-04-30 07:12:52'),
+(36, 2, 7, 12, 'Product quantity modified from 0.76 to 0.75', '127.0.0.1', '2017-04-30 07:14:31'),
 (37, 1, 1, NULL, 'John Doe[johndoe] has logged in', '127.0.0.1', '2017-04-30 07:25:28'),
 (38, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '127.0.0.1', '2017-04-30 07:28:28'),
 (39, 1, 1, NULL, 'John Doe[johndoe] has logged in', '127.0.0.1', '2017-04-30 07:28:50'),
-(35, 2, 7, 15, 'Product quantity modified from 600 to 550', '127.0.0.1', '2017-04-30 07:12:52'),
-(36, 2, 7, 12, 'Product quantity modified from 0.76 to 0.75', '127.0.0.1', '2017-04-30 07:14:31'),
+(40, 1, 2, 23, 'Product added', '127.0.0.1', '2017-04-30 08:40:44'),
+(41, 1, 3, 1, 'Product {Portocale, Romania, 148, kilograms} modified to {Portocale, Romania, 150, kilograms}', '127.0.0.1', '2017-04-30 08:55:11'),
 (42, 2, 1, NULL, 'Jane Roe[janeroe] has logged in', '127.0.0.1', '2017-04-30 09:31:39'),
 (43, 2, 3, 1, 'Product {Portocale, Romania, 151, kilograms} modified to {Portocale, Romania, 150, kilograms}', '127.0.0.1', '2017-04-30 09:32:38'),
 (44, 2, 3, 1, 'Product {Portocale, Romania, 150, kilograms} modified to {Portocale, Romania, 160, kilograms}', '127.0.0.1', '2017-04-30 09:36:17'),
@@ -413,12 +424,12 @@ INSERT INTO `employee_log` (`ID`, `employee_ID`, `action_type_ID`, `product_modi
 (62, 2, 8, 1, 'Product quantity modified from 166 to 169', '127.0.0.1', '2017-04-30 14:40:21'),
 (63, 2, 8, 28, 'Product added', '127.0.0.1', '2017-04-30 14:40:21'),
 (64, 2, 8, 28, 'Product quantity modified from 0.85 to 1.1', '127.0.0.1', '2017-04-30 14:40:51'),
+(71, 2, 7, 13, 'Product quantity modified from 300 to 200', '127.0.0.1', '2017-04-30 15:46:35'),
+(72, 2, 7, 28, 'Product quantity modified from 1.1 to 1.05', '127.0.0.1', '2017-04-30 15:46:35'),
 (73, 2, 7, 1, 'Product quantity modified from 169 to 168', '127.0.0.1', '2017-04-30 16:07:52'),
 (74, 2, 8, 1, 'Product quantity modified from 168 to 169', '127.0.0.1', '2017-04-30 16:12:17'),
 (75, 2, 8, 1, 'Product quantity modified from 169 to 169.5', '127.0.0.1', '2017-04-30 16:12:51'),
 (76, 2, 8, 28, 'Product quantity modified from 1.05 to 1.06', '127.0.0.1', '2017-04-30 16:12:51'),
-(71, 2, 7, 13, 'Product quantity modified from 300 to 200', '127.0.0.1', '2017-04-30 15:46:35'),
-(72, 2, 7, 28, 'Product quantity modified from 1.1 to 1.05', '127.0.0.1', '2017-04-30 15:46:35'),
 (77, 2, 8, 28, 'Product quantity modified from 1.06 to 1.061', '127.0.0.1', '2017-04-30 16:17:04'),
 (78, 2, 7, 28, 'Product quantity modified from 1.061 to 1.051', '127.0.0.1', '2017-04-30 16:18:01'),
 (79, 2, 8, 1, 'Product quantity modified from 169.5 to 170.5', '127.0.0.1', '2017-04-30 17:17:43'),
@@ -492,7 +503,41 @@ INSERT INTO `employee_log` (`ID`, `employee_ID`, `action_type_ID`, `product_modi
 (147, 2, 1, NULL, 'Jane Roe[janeroe] has logged in', '127.0.0.1', '2017-05-01 17:16:30'),
 (148, 2, 3, 19, 'Product {Mouse, China, 20, pieces} modified to {Mouse, China, 21, pieces}', '127.0.0.1', '2017-05-01 17:17:42'),
 (149, 2, 8, 30, 'Product added', '127.0.0.1', '2017-05-01 17:18:22'),
-(150, 2, 4, 30, 'Product {asdf, Bahamas, 3, kilograms} deleted', '127.0.0.1', '2017-05-01 17:18:36');
+(150, 2, 4, 30, 'Product {asdf, Bahamas, 3, kilograms} deleted', '127.0.0.1', '2017-05-01 17:18:36'),
+(151, 1, 1, NULL, 'John Doe[johndoe] has logged in', '94.52.74.128', '2017-05-02 06:54:01'),
+(152, 1, 7, 11, 'Product quantity modified from 40 to 38', '94.52.74.128', '2017-05-02 06:56:42'),
+(153, 1, 7, 14, 'Product quantity modified from 1075 to 1050', '94.52.74.128', '2017-05-02 06:56:42'),
+(154, 1, 8, 11, 'Product quantity modified from 38 to 40', '94.52.74.128', '2017-05-02 06:57:29'),
+(155, 1, 8, 14, 'Product quantity modified from 1050 to 1075', '94.52.74.128', '2017-05-02 06:57:29'),
+(156, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '94.52.74.128', '2017-05-02 07:20:24'),
+(157, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '94.52.74.128', '2017-05-02 07:56:38'),
+(158, 3, 6, NULL, 'New user added {full_name:Olivian , username:olivian}', '94.52.74.128', '2017-05-02 07:57:31'),
+(159, 5, 1, NULL, 'Olivian[olivian] has logged in', '94.52.74.128', '2017-05-02 08:01:23'),
+(160, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '94.52.74.128', '2017-05-02 08:39:21'),
+(161, 1, 1, NULL, 'John Doe[johndoe] has logged in', '194.169.191.201', '2017-05-02 09:07:28'),
+(162, 1, 3, 1, 'Product {Portocale, Romania, 174.5, kilograms} modified to {Portocale, Oman, 174.5, kilograms}', '194.169.191.201', '2017-05-02 09:09:30'),
+(163, 1, 7, 1, 'Product quantity modified from 174.5 to 165.5', '194.169.191.201', '2017-05-02 09:14:12'),
+(164, 1, 7, 2, 'Product quantity modified from 120 to 112', '194.169.191.201', '2017-05-02 09:14:12'),
+(165, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '194.169.191.201', '2017-05-02 09:25:08'),
+(166, 3, 3, 1, 'Product {Portocale, Oman, 165.5, kilograms} modified to {Portocale, Romania, 165.5, kilograms}', '94.52.74.128', '2017-05-02 10:19:13'),
+(167, 1, 1, NULL, 'John Doe[Johndoe] has logged in', '178.138.97.144', '2017-05-02 16:01:51'),
+(168, 1, 7, 1, 'Product quantity modified from 165.5 to 165.5', '178.138.97.144', '2017-05-02 16:04:39'),
+(169, 1, 7, 2, 'Product quantity modified from 112 to 112', '178.138.97.144', '2017-05-02 16:04:39'),
+(170, 1, 7, 9, 'Product quantity modified from 85.05 to 36.05', '178.138.97.144', '2017-05-02 16:04:39'),
+(171, 1, 7, 10, 'Product quantity modified from 100 to 100', '178.138.97.144', '2017-05-02 16:04:39'),
+(172, 1, 7, 11, 'Product quantity modified from 40 to 40', '178.138.97.144', '2017-05-02 16:04:39'),
+(173, 1, 8, 1, 'Product quantity modified from 165.5 to 165.5', '178.138.97.144', '2017-05-02 16:05:45'),
+(174, 1, 8, 2, 'Product quantity modified from 112 to 112', '178.138.97.144', '2017-05-02 16:05:45'),
+(175, 1, 8, 9, 'Product quantity modified from 36.05 to 85.05', '178.138.97.144', '2017-05-02 16:05:45'),
+(176, 1, 8, 10, 'Product quantity modified from 100 to 100', '178.138.97.144', '2017-05-02 16:05:45'),
+(177, 1, 8, 11, 'Product quantity modified from 40 to 40', '178.138.97.144', '2017-05-02 16:05:45'),
+(178, 1, 1, NULL, 'John Doe[johndoe] has logged in', '94.52.74.101', '2017-05-05 19:06:45'),
+(179, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '94.52.74.101', '2017-05-06 16:55:07'),
+(180, 3, 8, 10, 'Product quantity modified from 100 to 105', '94.52.74.101', '2017-05-06 16:55:56'),
+(181, 3, 8, 31, 'Product added', '94.52.74.101', '2017-05-06 16:55:56'),
+(182, 3, 3, 31, 'Product {Suc de mere, Romania, 10, liters} modified to {Suc de mere, Romania, 10, liters}', '94.52.74.101', '2017-05-06 17:02:07'),
+(183, 1, 1, NULL, 'John Doe[johndoe] has logged in', '94.52.74.101', '2017-05-06 20:39:50'),
+(184, 3, 1, NULL, 'Warehouse Keeper[admin] has logged in', '94.52.74.101', '2017-05-06 20:40:06');
 
 -- --------------------------------------------------------
 
@@ -500,34 +545,39 @@ INSERT INTO `employee_log` (`ID`, `employee_ID`, `action_type_ID`, `product_modi
 -- Table structure for table `products`
 --
 
-CREATE TABLE `products` (
-  `ID` int(11) NOT NULL,
-  `Name` varchar(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS `products` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `Country_ID` int(11) NOT NULL COMMENT 'Country of origin (COO) ID',
   `Quantity` double NOT NULL,
   `Unit_of_measure_ID` int(11) NOT NULL,
   `Last_modified_by_employee_ID` int(11) NOT NULL,
-  `Last_time_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `Last_time_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`),
+  KEY `products_country_contraint` (`Country_ID`),
+  KEY `products_employees_constraint` (`Last_modified_by_employee_ID`),
+  KEY `products_unitsofmeasures_constraint` (`Unit_of_measure_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`ID`, `Name`, `Country_ID`, `Quantity`, `Unit_of_measure_ID`, `Last_modified_by_employee_ID`, `Last_time_modified`) VALUES
-(1, 'Portocale', 181, 174.5, 1, 1, '2017-05-01 17:10:55'),
-(2, 'Banane', 106, 120, 1, 2, '2017-04-23 16:16:49'),
-(10, 'Rosii', 222, 100, 1, 1, '2017-04-26 16:28:59'),
-(9, 'Mere', 181, 85.05, 1, 1, '2017-05-01 17:10:55'),
-(11, 'Caiet', 33, 40, 2, 1, '2017-04-23 21:07:23'),
+(1, 'Portocale', 181, 165.5, 1, 1, '2017-05-02 16:04:39'),
+(2, 'Banane', 106, 112, 1, 1, '2017-05-02 09:14:12'),
+(9, 'Mere', 181, 85.05, 1, 1, '2017-05-02 16:05:45'),
+(10, 'Rosii', 222, 105, 1, 3, '2017-05-06 16:55:56'),
+(11, 'Caiet', 33, 40, 2, 1, '2017-05-02 06:57:29'),
 (12, 'Pix', 144, 0.76, 1, 2, '2017-04-30 09:59:58'),
 (13, 'Guma mestecat', 181, 215, 2, 2, '2017-04-30 17:28:52'),
-(14, 'Coli A4', 44, 1075, 2, 2, '2017-04-30 17:28:52'),
+(14, 'Coli A4', 44, 1075, 2, 1, '2017-05-02 06:57:29'),
 (15, 'Coli A3', 44, 550, 2, 2, '2017-04-30 07:12:52'),
-(19, 'Mouse', 44, 21, 2, 2, '2017-05-01 17:17:42'),
 (18, 'Apa minerala', 181, 210, 2, 1, '2017-04-30 06:44:27'),
+(19, 'Mouse', 44, 21, 2, 2, '2017-05-01 17:17:42'),
 (28, 'praf', 1, 1.151, 1, 1, '2017-05-01 17:11:15'),
-(29, 'covor', 181, 10, 2, 2, '2017-04-30 17:28:52');
+(29, 'covor', 181, 10, 2, 2, '2017-04-30 17:28:52'),
+(31, 'Suc de mere', 181, 10, 3, 3, '2017-05-06 17:33:40');
 
 -- --------------------------------------------------------
 
@@ -535,11 +585,14 @@ INSERT INTO `products` (`ID`, `Name`, `Country_ID`, `Quantity`, `Unit_of_measure
 -- Table structure for table `units_of_measure`
 --
 
-CREATE TABLE `units_of_measure` (
-  `ID` int(11) NOT NULL,
-  `unit_name` varchar(120) NOT NULL,
-  `Abbreviation` varchar(10) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `units_of_measure` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `unit_name` varchar(120) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `Abbreviation` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `Abbreviation` (`Abbreviation`),
+  UNIQUE KEY `Name` (`unit_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `units_of_measure`
@@ -547,87 +600,31 @@ CREATE TABLE `units_of_measure` (
 
 INSERT INTO `units_of_measure` (`ID`, `unit_name`, `Abbreviation`) VALUES
 (1, 'kilograms', 'kg'),
-(2, 'pieces', 'pcs');
+(2, 'pieces', 'pcs'),
+(3, 'liters', 'L'),
+(4, 'grams', 'g'),
+(5, 'boxes', 'box');
 
 --
--- Indexes for dumped tables
+-- Constraints for dumped tables
 --
 
 --
--- Indexes for table `action_type`
---
-ALTER TABLE `action_type`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `countries`
---
-ALTER TABLE `countries`
-  ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `country_name` (`country_name`),
-  ADD UNIQUE KEY `country_code` (`country_code`);
-
---
--- Indexes for table `employees`
---
-ALTER TABLE `employees`
-  ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- Indexes for table `employee_log`
+-- Constraints for table `employee_log`
 --
 ALTER TABLE `employee_log`
-  ADD PRIMARY KEY (`ID`);
+  ADD CONSTRAINT `employee_log_actions_constraint` FOREIGN KEY (`action_type_ID`) REFERENCES `action_type` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `employee_log_employees_constraint` FOREIGN KEY (`employee_ID`) REFERENCES `employees` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `employee_log_ibfk_1` FOREIGN KEY (`product_modified_ID`) REFERENCES `products` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Indexes for table `products`
+-- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`ID`);
+  ADD CONSTRAINT `products_country_contraint` FOREIGN KEY (`Country_ID`) REFERENCES `countries` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_employees_constraint` FOREIGN KEY (`Last_modified_by_employee_ID`) REFERENCES `employees` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_unitsofmeasures_constraint` FOREIGN KEY (`Unit_of_measure_ID`) REFERENCES `units_of_measure` (`ID`) ON UPDATE CASCADE;
 
---
--- Indexes for table `units_of_measure`
---
-ALTER TABLE `units_of_measure`
-  ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `Abbreviation` (`Abbreviation`),
-  ADD UNIQUE KEY `Name` (`unit_name`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `action_type`
---
-ALTER TABLE `action_type`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `countries`
---
-ALTER TABLE `countries`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
---
--- AUTO_INCREMENT for table `employees`
---
-ALTER TABLE `employees`
-  MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `employee_log`
---
-ALTER TABLE `employee_log`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
---
--- AUTO_INCREMENT for table `units_of_measure`
---
-ALTER TABLE `units_of_measure`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

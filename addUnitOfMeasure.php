@@ -22,8 +22,9 @@ require 'adminconnectedcheck.php';
   if(isset($_POST['um_name']) && isset($_POST['um_abbreviation']))
   {
     try {
-      $um_name = trim($_POST['um_name']);
-      $um_abbreviation = trim($_POST['um_abbreviation']);
+			require 'inputTest.php';
+      $um_name = inputTest($_POST['um_name']);
+      $um_abbreviation = inputTest($_POST['um_abbreviation']);
       if ($um_name != '' && $um_abbreviation != '') {
         require 'connection.php';
         require 'unitsofmeasure.php';

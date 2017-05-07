@@ -2,11 +2,12 @@
 <?php
 require 'userconnectedcheck.php';
 require 'adminconnectedcheck.php';
+require 'inputTest.php';
 
 if (isset($_POST['um_id']) && isset($_POST['um_name']) && isset($_POST['um_abbreviation'])) {
-  $um_id = $_POST['um_id'];
-  $um_name = trim($_POST['um_name']);
-  $um_abbreviation = trim($_POST['um_abbreviation']);
+  $um_id = inputTest($_POST['um_id']);
+  $um_name = inputTest($_POST['um_name']);
+  $um_abbreviation = inputTest($_POST['um_abbreviation']);
 
   try {
     if ($um_name != '' && $um_abbreviation != '') {

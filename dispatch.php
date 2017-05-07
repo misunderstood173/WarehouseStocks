@@ -25,7 +25,7 @@ try {
 		die($e->getMessage());
 }
 
-	if($_SERVER["REQUEST_METHOD"] == "POST")
+	if(isset($_POST['product']) && isset($_POST['quantity']))
   {
 		$required_products = array('ids' => $_POST['product'],
 															 'quantities' => $_POST['quantity']);

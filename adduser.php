@@ -18,13 +18,14 @@ require 'adminconnectedcheck.php';
 
 <?php
 $full_name = $username = $password = '';
-    if($_SERVER["REQUEST_METHOD"] == "POST")
+    if(isset($_POST['full_name']) && isset($_POST['username']) && isset($_POST['password']))
     {
       try {
+        require 'inputTest.php';
         $employee_ID = $_SESSION['ID'];
-        $full_name = trim($_POST['full_name']);
-        $username = trim($_POST['username']);
-        $password = trim($_POST['password']);
+        $full_name = inputTest($_POST['full_name']);
+        $username = inputTest($_POST['username']);
+        $password = inputTest($_POST['password']);
         if ($full_name != '' && $username != '' && $password != '') {
           require 'connection.php';
 					require 'getIDqueries.php';

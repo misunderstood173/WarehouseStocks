@@ -1,13 +1,16 @@
 <title>Update Product</title>
 <?php
 require('userconnectedcheck.php');
+require 'inputTest.php';
 
-$product_id = trim($_POST['product_id']);
+if($_SERVER["REQUEST_METHOD"] != "POST")
+  die('You shouldn\'t be here.<br><p><a href="warehouse.php">Go to Warehouse</a></p>');
+$product_id = inputTest($_POST['product_id']);
 //new attributes
-$product_name = trim($_POST['product_name']);
-$product_country = trim($_POST['product_country']);
-$product_quantity = trim($_POST['product_quantity']);
-$product_UM = trim($_POST['product_UM']);
+$product_name = inputTest($_POST['product_name']);
+$product_country = inputTest($_POST['product_country']);
+$product_quantity = inputTest($_POST['product_quantity']);
+$product_UM = inputTest($_POST['product_UM']);
 //old attributes
 $old_product_name = $_POST['old_product_name'];
 $old_product_country = $_POST['old_product_country'];

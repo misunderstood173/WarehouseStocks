@@ -19,14 +19,15 @@ echo buildDefaultMenu();
 <?php
 
 $product_name = $product_country_id = $product_quantity = $product_UM_id = '';
-    if($_SERVER["REQUEST_METHOD"] == "POST")
+    if(isset($_POST['product_name']) && isset($_POST['product_country_id']) && isset($_POST['product_quantity']) && isset($_POST['product_UM_id']))
     {
       try {
-        $product_name = trim($_POST['product_name']);
-        $product_country_id = trim($_POST['product_country_id']);
-        $product_quantity = trim($_POST['product_quantity']);
-        $product_UM_id = trim($_POST['product_UM_id']);
-        if ($product_name != '' && $product_country_id != '' && $product_quantity != '' && $product_UM_id != '') {
+				require 'inputTest.php';
+        $product_name = inputTest($_POST['product_name']);
+        $product_country_id = inputTest($_POST['product_country_id']);
+        $product_quantity = inputTest($_POST['product_quantity']);
+        $product_UM_id = inputTest($_POST['product_UM_id']);
+      if ($product_name != '' && $product_country_id != '' && $product_quantity != '' && $product_UM_id != '') {
         require 'connection.php';
 				require 'productsActions.php';
 

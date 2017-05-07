@@ -2,12 +2,13 @@
 <?php
 require 'userconnectedcheck.php';
 require 'adminconnectedcheck.php';
+require 'inputTest.php';
 
 if (isset($_POST['user_id']) && isset($_POST['full_name']) && isset($_POST['username']) && isset($_POST['password'])) {
   $user_id = $_POST['user_id'];
-  $user_full_name = trim($_POST['full_name']);
-  $username = trim($_POST['username']);
-  $password = trim($_POST['password']);
+  $user_full_name = inputTest($_POST['full_name']);
+  $username = inputTest($_POST['username']);
+  $password = inputTest($_POST['password']);
 
   try {
     if ($user_full_name != '' && $username != '' && $password != '') {

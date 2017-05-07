@@ -1,5 +1,6 @@
 <?php
 require 'productsActions.php';
+require 'inputTest.php';
 function receiveProducts($products)
 {
   try {
@@ -9,19 +10,21 @@ function receiveProducts($products)
     $length = count($products['product_name']);
 
     for ($i=0; $i < $length; $i++) {
-      $product_name = $products['product_name'][$i];
-      $product_country_id = $products['product_country_id'][$i];
-      $product_quantity = $products['product_quantity'][$i];
-      $product_UM_id = $products['product_UM_id'][$i];
+      $product_name = inputTest($products['product_name'][$i]);
+      $product_country_id = inputTest($products['product_country_id'][$i]);
+      $product_quantity = inputTest($products['product_quantity'][$i]);
+      $product_UM_id = inputTest($products['product_UM_id'][$i]);
 
       $desc = '';
       $product = checkIfProductExists($conn, $product_name, $product_country_id, $product_UM_id);
       $product_id = $product['ID'];
       if ($product != False)
       {
-        $new_quantity = floatval($product['Quantity']) + floatval($product_quantity);
-        updateProduct($conn, $product_id, $product['Name'], $product['Country_ID'], $new_quantity, $product['Unit_of_measure_ID']);
-        $desc = 'Product quantity modified from ' . $product['Quantity'] . ' to ' . $new_quantity;
+        if (floatval($product_quantity) != 0) {
+          $new_quantity = floatval($product['Quantity']) + floatval($product_quantity);
+          updateProduct($conn, $product_id, $product['Name'], $product['Country_ID'], $new_quantity, $product['Unit_of_measure_ID']);
+          $desc = 'Product quantity modified from ' . $product['Quantity'] . ' to ' . $new_quantity;
+        }
       }
       else
       {
@@ -55,8 +58,8 @@ function dispatchProducts($allProducts, $required_products)
 		$length = count($required_products['ids']);
 		//check quantities
 		for ($i=0; $i < $length; $i++) {
-			$req_quantity = $required_products['quantities'][$i];
-			$req_product_id = $required_products['ids'][$i];
+			$req_quantity = inputTest($required_products['quantities'][$i]);
+			$req_product_id = inputTest($required_products['ids'][$i]);
 			$warehouse_stock = getProductQuantity($conn, $req_product_id);
 			if (floatval($req_quantity) > $warehouse_stock) {
 				die('Not enough in stock for ' . "'" . $allProducts[$req_product_id]['name'] . "'"
@@ -68,11 +71,13 @@ function dispatchProducts($allProducts, $required_products)
 		}
 
 		for ($i=0; $i < $length; $i++) {
-			$req_quantity = floatval($required_products['quantities'][$i]);
-			$req_product_id = $required_products['ids'][$i];
-			$new_product_quantity = floatval($allProducts[$req_product_id]['quantity']) - $req_quantity;
-			updateProductQuantity($conn, $allProducts[$req_product_id], $new_product_quantity);
-			$allProducts[$req_product_id]['quantity'] = $new_product_quantity;
+			$req_quantity = floatval(inputTest($required_products['quantities'][$i]));
+      if ($req_quantity != 0) {
+  			$req_product_id = inputTest($required_products['ids'][$i]);
+  			$new_product_quantity = floatval($allProducts[$req_product_id]['quantity']) - $req_quantity;
+  			updateProductQuantity($conn, $allProducts[$req_product_id], $new_product_quantity);
+  			$allProducts[$req_product_id]['quantity'] = $new_product_quantity;
+      }
 		}
 
 		} catch (PDOException  $e) {
