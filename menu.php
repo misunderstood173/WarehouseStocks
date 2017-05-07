@@ -2,12 +2,13 @@
 function buildMenu($linkCaptionDictionary)
 {
   echo '<h2>Warehouse</h2>';
+  echo '<link rel="stylesheet" href="/warehousestocks/css/menu.css">';
 
-  $menu ='<aside><ul class="menu">';
+  $menu ='<nav><ul class="menu">';
   foreach ($linkCaptionDictionary as $link => $caption) {
     $menu .= '<li><a href="' . $link . '">' . $caption . '</a></li>';
   }
-  $menu .= '</ul></aside>';
+  $menu .= '</ul></nav>';
   return $menu;
 }
 
