@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 07, 2017 at 06:15 PM
+-- Generation Time: May 08, 2017 at 08:17 AM
 -- Server version: 10.1.20-MariaDB
 -- PHP Version: 7.0.8
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `id1016243_warehouse`
+-- Database: `warehouse`
 --
 
 -- --------------------------------------------------------
@@ -545,7 +545,12 @@ INSERT INTO `employee_log` (`ID`, `employee_ID`, `action_type_ID`, `product_modi
 (199, 3, 8, 34, 'Product added', '94.52.74.128', '2017-05-07 18:13:07'),
 (200, 3, 8, 35, 'Product added', '94.52.74.128', '2017-05-07 18:13:07'),
 (201, 3, 4, 34, 'Product {Suc TEST, Romania, 12, } deleted', '94.52.74.128', '2017-05-07 18:13:22'),
-(202, 3, 4, 35, 'Product {BETA, Romania, 11, grams} deleted', '94.52.74.128', '2017-05-07 18:13:36');
+(202, 3, 4, 35, 'Product {BETA, Romania, 11, grams} deleted', '94.52.74.128', '2017-05-07 18:13:36'),
+(203, 3, 7, 1, 'Product quantity modified from 165.5 to 164.5', '94.52.74.128', '2017-05-07 18:22:15'),
+(204, 3, 7, 1, 'Product quantity modified from 164.5 to 163.5', '94.52.74.128', '2017-05-07 18:22:37'),
+(205, 3, 7, 33, 'Product quantity modified from 60 to 54', '94.52.74.128', '2017-05-07 18:22:37'),
+(206, 3, 8, 1, 'Product quantity modified from 163.5 to 164.5', '94.52.74.128', '2017-05-07 18:28:43'),
+(207, 3, 8, 33, 'Product quantity modified from 54 to 60', '94.52.74.128', '2017-05-07 18:28:43');
 
 -- --------------------------------------------------------
 
@@ -568,7 +573,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`ID`, `Name`, `Country_ID`, `Quantity`, `Unit_of_measure_ID`, `Last_modified_by_employee_ID`, `Last_time_modified`) VALUES
-(1, 'Portocale', 181, 165.5, 1, 1, '2017-05-02 16:04:39'),
+(1, 'Portocale', 181, 164.5, 1, 3, '2017-05-07 18:28:43'),
 (2, 'Banane', 106, 112, 1, 1, '2017-05-02 09:14:12'),
 (9, 'Mere', 181, 85.05, 1, 1, '2017-05-02 16:05:45'),
 (10, 'Rosii', 222, 105, 1, 3, '2017-05-06 16:55:56'),
@@ -583,7 +588,7 @@ INSERT INTO `products` (`ID`, `Name`, `Country_ID`, `Quantity`, `Unit_of_measure
 (29, 'covor', 181, 10, 2, 2, '2017-04-30 17:28:52'),
 (31, 'Suc de mere', 181, 10, 3, 3, '2017-05-06 21:14:28'),
 (32, 'Elastic', 44, 25, 5, 3, '2017-05-06 21:16:07'),
-(33, 'Apa plata', 181, 60, 2, 3, '2017-05-06 21:17:59');
+(33, 'Apa plata', 181, 60, 2, 3, '2017-05-07 18:28:43');
 
 -- --------------------------------------------------------
 
@@ -682,7 +687,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `employee_log`
 --
 ALTER TABLE `employee_log`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 --
 -- AUTO_INCREMENT for table `products`
 --
