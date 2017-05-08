@@ -36,7 +36,7 @@ try {
     "SELECT products.ID, products.Name, countries.country_name, products.Quantity,
     units_of_measure.Abbreviation, units_of_measure.unit_name ,employees.Full_name, products.Last_time_modified
     FROM products
-    JOIN countries on products.Country_ID = countries.ID
+    LEFT JOIN countries on products.Country_ID = countries.ID
     LEFT JOIN units_of_measure on products.Unit_of_measure_ID = units_of_measure.ID
     JOIN employees on products.Last_modified_by_employee_ID = employees.ID
 		ORDER BY products.ID ASC"
