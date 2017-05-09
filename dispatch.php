@@ -195,5 +195,6 @@ function getAllPreviousProductsMax()
 }
 </script>
 
+<?php include 'footer.html'; ?>
 </body>
 </html>

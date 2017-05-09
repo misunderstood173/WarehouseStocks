@@ -82,6 +82,6 @@ try {
   echo "Connection failed: " . $e->getMessage();
 }
 ?>
-
+<?php include 'footer.html'; ?>
 </body>
 </html>

@@ -15,5 +15,6 @@
       echo 'You are not logged in!';
     }
     echo '<br>';
-    echo '<a href=/warehousestocks/index.html>Go to homepage</a>';
+    echo '<a href=/warehousestocks/index.php>Go to homepage</a>';
  ?>
+ <?php include 'footer.html'; ?>

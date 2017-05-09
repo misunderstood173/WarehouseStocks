@@ -51,6 +51,6 @@ try {
 	</div>
 	<input type="submit" name="btnEditUser" value="Edit" tabindex="4">
 </form>
-
+<?php include 'footer.html'; ?>
 </body>
 </html>

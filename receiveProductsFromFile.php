@@ -62,5 +62,6 @@ previewProducts($products);
       <input type="hidden" name="products" value=' <?php echo json_encode($products, true); ?> ' >
       <input type="submit" name="btnReceive" value="Receive products">
 </form>
+<?php include 'footer.html'; ?>
 </body>
 </html>

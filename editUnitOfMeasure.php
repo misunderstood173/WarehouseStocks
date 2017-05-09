@@ -49,5 +49,6 @@ try {
 
  	<input type="submit" name="btnEditUM" value="Edit" tabindex="3">
  </form>
+ <?php include 'footer.html'; ?>
  </body>
  </html>

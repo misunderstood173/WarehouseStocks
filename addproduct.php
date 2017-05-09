@@ -106,5 +106,6 @@ $product_name = $product_country_id = $product_quantity = $product_UM_id = '';
 	</div>
 	<input type="submit" name="btnAddProduct" value="Add Product" tabindex="5">
 </form>
+<?php include 'footer.html'; ?>
 </body>
 </html>

@@ -23,8 +23,10 @@ if (isset($_SESSION['admin'])) {
 $menuArray['/warehousestocks/logout.php'] = 'Log Out';
 echo buildMenu($menuArray);
 
-echo 'Welcome ' . $_SESSION["user"] .'!';
-?>
+echo '<p>Welcome ' . $_SESSION["user"] .'!</p>';
 
+include 'footer.html';
+?>
+<?php include 'footer.html'; ?>
 </body>
 </html>

@@ -76,5 +76,6 @@ $product_UM = $_POST['product_UM'];
  	</div>
  	<input type="submit" name="btnUpdateProduct" value="Update Product" tabindex="5">
  </form>
+ <?php include 'footer.html'; ?>
  </body>
  </html>

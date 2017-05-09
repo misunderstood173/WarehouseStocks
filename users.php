@@ -71,6 +71,6 @@ echo '</table>';
 ?>
 
 <a href="/warehousestocks/adduser.php">Add new user</a>
-
+<?php include 'footer.html'; ?>
 </body>
 </html>

@@ -79,6 +79,6 @@ $full_name = $username = $password = '';
 	</div>
 	<input type="submit" name="btnAddUser" value="Add New User" tabindex="4">
 </form>
-
+<?php include 'footer.html'; ?>
 </body>
 </html>

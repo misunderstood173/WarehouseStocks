@@ -83,5 +83,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <input type="submit" name="btnYes" value="Yes">
 </form>
   <p><a href="/warehousestocks/products.php">Go Back</a></p>
+	<?php include 'footer.html'; ?>
 </body>
 </html>

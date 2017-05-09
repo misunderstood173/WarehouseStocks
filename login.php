@@ -82,7 +82,7 @@ if (isset($_SESSION['user']) && $_SESSION['user'] != '')
 	</div>
 	<input type="submit" name="btnLogIn" value="Log In" tabindex="3">
 </form>
-	<p><a href="/warehousestocks/index.html">Go back</a></p>
-
+	<p><a href="/warehousestocks/index.php">Go back</a></p>
+<?php include 'footer.html'; ?>
 </body>
 </html>

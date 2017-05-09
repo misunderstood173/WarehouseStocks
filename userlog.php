@@ -65,6 +65,6 @@ try {
 
 echo '</table>';
 ?>
-
+<?php include 'footer.html'; ?>
 </body>
 </html>

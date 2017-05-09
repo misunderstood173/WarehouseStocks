@@ -34,4 +34,5 @@ $productInfo = $product_name . ', ' . $product_country . ', '
 </form>
   <p><a href="/warehousestocks/products.php">Go Back</a></p>
 </body>
+<?php include 'footer.html'; ?>
 </html>

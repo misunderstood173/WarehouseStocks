@@ -52,4 +52,5 @@ try {
 ?>
 	<p><a href="/warehousestocks/index.html">Go back</a></p>
 </body>
+<?php include 'footer.html'; ?>
 </html>

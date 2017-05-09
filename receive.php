@@ -139,6 +139,6 @@ function getInputSoFar()
 }
 
 </script>
-
+<?php include 'footer.html'; ?>
 </body>
 </html>

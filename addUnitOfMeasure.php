@@ -72,5 +72,6 @@ require 'adminconnectedcheck.php';
 
  	<input type="submit" name="btnAddUM" value="Add Unit of Measure" tabindex="3">
 </form>
+<?php include 'footer.html'; ?>
 </body>
 </html>

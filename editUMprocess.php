@@ -37,3 +37,4 @@ if (isset($_POST['um_id']) && isset($_POST['um_name']) && isset($_POST['um_abbre
     }
 }
 ?>
+<?php include 'footer.html'; ?>

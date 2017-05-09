@@ -40,3 +40,4 @@ if (isset($_POST['user_id']) && isset($_POST['full_name']) && isset($_POST['user
     }
 }
 ?>
+<?php include 'footer.html'; ?>

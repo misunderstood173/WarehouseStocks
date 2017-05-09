@@ -61,6 +61,6 @@ echo '</table>';
 ?>
 
 <a href="/warehousestocks/addUnitOfMeasure.php">Add new unit of measure</a>
-
+<?php include 'footer.html'; ?>
 </body>
 </html>
