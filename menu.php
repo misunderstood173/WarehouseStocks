@@ -1,9 +1,9 @@
 <?php
 function buildMenu($linkCaptionDictionary)
 {
-  $menu = '<header>' . 
-          '<nav><ul class="menu">' .
+  $menu = '<header>' .
           '<h2 class="title">Warehouse</h2>' .
+          '<nav><ul class="menu">' .
           '<link rel="stylesheet" href="/warehousestocks/css/menu.css">';
   foreach ($linkCaptionDictionary as $link => $caption) {
     $menu .= '<li><a href="' . $link . '">' . $caption . '</a></li>';
