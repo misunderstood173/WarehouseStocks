@@ -25,7 +25,6 @@ echo buildMenu($menuArray);
 
 echo '<p>Welcome ' . $_SESSION["user"] .'!</p>';
 
-include 'footer.html';
 ?>
 <?php include 'footer.html'; ?>
 </body>

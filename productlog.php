@@ -13,19 +13,27 @@ require('userconnectedcheck.php');
 
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $product_id = $_POST['product_id'];
-  $product_name = $_POST['product_name'];
-  $product_country = $_POST['product_country'];
-  $product_quantity = $_POST['product_quantity'];
-  $product_UM = $_POST['product_UM'];
+$results_per_page = 20;
+if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+if (isset($_GET["product_id"])) { $product_id  = $_GET["product_id"]; } else { $product_id=1; };
+$start_from = ($page-1) * $results_per_page;
 
-  $productInfo = $product_name . ', ' . $product_country . ', '
-              . $product_quantity . ', ' . $product_UM;
-  echo '<h2>' . $productInfo . '</h2>';
+if (isset($_POST['product_id'])) {
+  $product_id = $_POST['product_id'];
+}
 
   try {
     require "connection.php";
+		require 'productsActions.php';
+		$product = getProductDetailsByID($conn, $product_id);
+		$product_name = $product['Name'];
+		$product_country = $product['country_name'];
+		$product_quantity = $product['Quantity'];
+		$product_UM = $product['unit_name'];
+
+		$productInfo = $product_name . ' | ' . $product_country . ' | '
+								. $product_quantity . ' | ' . $product_UM;
+		echo '<h2>' . $productInfo . '</h2>';
 
     $stmt = $conn->prepare(
       "SELECT CONCAT(employees.Full_name, ' [', employees.username, ']') AS 'Employee', employee_log.employee_ID,
@@ -34,7 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       JOIN employees ON employees.ID = employee_log.employee_ID
       JOIN action_type on action_type.ID = employee_log.action_type_ID
       WHERE employee_log.product_modified_ID = :product_id
-      ORDER BY employee_log.ID DESC"
+      ORDER BY employee_log.ID DESC
+			LIMIT " . $start_from . ", " . $results_per_page
       );
     $stmt->bindParam('product_id', $product_id);
     $stmt->execute();
@@ -65,24 +74,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     echo '</table>';
-    die('<p><a href="/warehousestocks/products.php">Go Back</a></p>');
+
+		$stmt = $conn->prepare("SELECT COUNT(ID) AS total FROM employee_log WHERE employee_log.product_modified_ID = :product_id");
+		$stmt->bindParam('product_id', $product_id);
+		$stmt->execute();
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		$total_pages = ceil($row["total"] / $results_per_page);
+
+		for ($i=1; $i<=$total_pages; $i++) {
+		            echo "<a href='/warehousestocks/productlog.php?product_id=" . $product_id . "&page=" . $i . "'";
+		            if ($i==$page)  echo " class='currentPage'";
+		            echo ">".$i."</a> ";
+		};
 
   } catch (PDOException  $e) {
     echo "Connection failed: " . $e->getMessage();
   }
-}
- ?>
-<form action="deleteprocess.php" method="post">
-  <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
-  <input type="hidden" name="product_name" value="<?php echo $product_name; ?>">
-  <input type="hidden" name="product_country" value="<?php echo $product_country; ?>">
-  <input type="hidden" name="product_quantity" value="<?php echo $product_quantity; ?>">
-  <input type="hidden" name="product_UM" value="<?php echo $product_UM; ?>">
 
-  <p>Are you sure you want to delete this product {<?php echo $productInfo ?>} ?</p>
-  <input type="submit" name="btnYes" value="Yes">
-</form>
-  <p><a href="/warehousestocks/products.php">Go Back</a></p>
+ ?>
+  <p><a href="/warehousestocks/products.php">Go to All Products</a></p>
 	<?php include 'footer.html'; ?>
 </body>
 </html>
