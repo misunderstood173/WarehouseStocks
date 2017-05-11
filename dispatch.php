@@ -11,8 +11,7 @@ require('userconnectedcheck.php');
 </head>
 <body>
 <?php
-require 'menu.php';
-echo buildDefaultMenu();
+include 'header.php';
 ?>
 	<h3>Dispatch products</h3>
 

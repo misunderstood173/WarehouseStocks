@@ -29,8 +29,7 @@ if (isset($_GET["user_id"])) {
 </head>
 <body>
 <?php
-require 'menu.php';
-echo buildDefaultMenu();
+include 'header.php';
 ?>
 	<h3><?php echo $user. "'s log"; ?></h3>
 <?php

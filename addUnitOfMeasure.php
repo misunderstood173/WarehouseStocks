@@ -12,8 +12,7 @@ require 'adminconnectedcheck.php';
 </head>
 <body>
 <?php
-	require 'menu.php';
-	echo buildDefaultMenu();
+	include 'header.php';
 ?>
 	<h3>Add a unit of measure</h3>
 

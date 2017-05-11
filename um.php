@@ -12,8 +12,7 @@ require 'adminconnectedcheck.php';
 </head>
 <body>
 <?php
-require 'menu.php';
-echo buildDefaultMenu();
+include 'header.php';
 ?>
 <h3>All Warehouse Units of Measure</h3>
 

@@ -21,7 +21,12 @@ if (isset($_SESSION['admin'])) {
 	$menuArray['/warehousestocks/um.php'] = 'Units of measure';
 }
 $menuArray['/warehousestocks/logout.php'] = 'Log Out';
+
+echo '<header>' .
+    '<link rel="stylesheet" href="/warehousestocks/css/menu.css">' .
+    '<h2 class="title">Warehouse</h2>';
 echo buildMenu($menuArray);
+echo  '</header>';
 
 echo '<p>Welcome ' . $_SESSION["user"] .'!</p>';
 

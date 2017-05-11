@@ -23,8 +23,7 @@ try {
     require 'connection.php';
     require 'getIDqueries.php';
     require 'productsActions.php';
-    require 'menu.php';
-    echo buildDefaultMenu();
+include 'header.php';
 
     $UM_ID = getUnitOfMeasureID($conn, $product_UM);
     $country_ID = getCountryID($conn, $product_country);

@@ -52,7 +52,7 @@ function checkIfProductExists($conn, $product_name, $product_country_id, $produc
 		$sql = $conn->prepare(
 			"SELECT *
 			FROM products
-			WHERE products.Name = :name AND products.Country_ID = :country_id
+			WHERE LOWER(products.Name) = LOWER(:name) AND products.Country_ID = :country_id
 						AND products.Unit_of_measure_ID = :UM_ID"
 			);
 		$sql->bindParam(':name', $product_name);

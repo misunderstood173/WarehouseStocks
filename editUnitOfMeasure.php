@@ -14,8 +14,7 @@ require 'adminconnectedcheck.php';
 
 
 <?php
-require 'menu.php';
-echo buildDefaultMenu();
+include 'header.php';
 if (!isset($_POST['um_id'])) {
   die();
 }

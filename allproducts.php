@@ -66,7 +66,7 @@ try {
   echo "Connection failed: " . $e->getMessage();
 }
 ?>
-	<p><a href="/warehousestocks/index.html">Go back</a></p>
+	<p><a href="/warehousestocks/index.php">Go back</a></p>
 </body>
 <?php include 'footer.html'; ?>
 </html>

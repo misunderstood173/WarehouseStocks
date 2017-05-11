@@ -11,10 +11,7 @@ require('userconnectedcheck.php');
 	<link rel="stylesheet" href="/warehousestocks/css/input.css">
 </head>
 <body>
-<?php
-require 'menu.php';
-echo buildDefaultMenu();
-?>
+ <?php include 'header.php'; ?>
  <h3>Add a product</h3>
 <?php
 
